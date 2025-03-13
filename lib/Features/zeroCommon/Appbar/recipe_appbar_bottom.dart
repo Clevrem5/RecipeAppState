@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipeapp3/Features/CategorieDetail/presentation/manager/category_detail_view_model.dart';
-import 'package:recipeapp3/Features/CategorieDetail/presentation/widgets/categories_detail_appbar_bottom_items.dart';
+
+import '../../CategoriesDetail/presentation/manager/category_detail_view_model.dart';
+import '../../CategoriesDetail/presentation/widgets/categories_detail_appbar_bottom_items.dart';
 
 class RecipeAppbarBottom extends StatelessWidget implements PreferredSizeWidget {
   const RecipeAppbarBottom({

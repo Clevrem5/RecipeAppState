@@ -1,5 +1,6 @@
 import 'package:recipeapp3/Core/client.dart';
-import 'package:recipeapp3/Features/CategorieDetail/data/models/recipe_model.dart';
+
+import '../models/recipe_model.dart';
 
 class RecipeRepository {
   final ApiClient client;

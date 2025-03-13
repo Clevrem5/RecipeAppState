@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/CategorieDetail/data/models/recipe_model.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
+
+import '../../data/models/recipe_model.dart';
 
 class RecipesItemsInfo extends StatelessWidget {
   const RecipesItemsInfo({
@@ -40,16 +41,16 @@ class RecipesItemsInfo extends StatelessWidget {
               data: recipe.title,
               color: AppColors.beigeColor,
               size: 12,
-              height: true,
+              height: 1,
             ),
             RecipeAppText(
               data: recipe.description,
               color: AppColors.beigeColor,
               size: 11,
-              family: "League Spartan",
+              font: false,
               weight: FontWeight.w200,
-              line: true,
-              height: true,
+              line: 2,
+              height: 1,
             ),
             SizedBox(height: 5,
               width: 50,

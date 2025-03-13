@@ -13,19 +13,21 @@ class RecipeSvgButton extends StatelessWidget {
     this.color = Colors.white,
     required this.callback,
     this.blend=true,
-    this.size=27,
+    this.sizeHeight=27,
+    this.sizeWidth=30,
   });
 
   final double width, height;
   final Color color;
   final VoidCallback callback;
   final bool blend;
-  final double size;
+  final double sizeHeight,sizeWidth;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size,
+      height: sizeHeight,
+      width: sizeWidth,
       child: IconButton(
         onPressed: callback,
         padding: EdgeInsets.zero,

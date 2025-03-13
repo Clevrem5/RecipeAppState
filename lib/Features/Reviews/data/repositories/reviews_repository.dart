@@ -8,12 +8,12 @@ class ReviewsRepository {
     required this.client,
   });
 
-  List<ReviewsModel> reviews = [];
+  ReviewsRecipeModel? reviews ;
 
-  Future<List<ReviewsModel>> fetchReviews() async {
-    if (reviews.isNotEmpty) return reviews;
-    var rawReview = await client.fetchReviews();
-    reviews = rawReview.map((e) => ReviewsModel.fromJson(e)).toList();
-    return reviews;
+  Future<ReviewsRecipeModel> fetchReviews(int recipeId) async {
+    if (reviews!=null) return reviews!;
+    var rawReview = await client.fetchRecipeForReviews(recipeId);
+    reviews=ReviewsRecipeModel.fromJson(rawReview);
+    return reviews!;
   }
 }

@@ -1,37 +1,30 @@
-class ReviewsModel {
-  final int id, userId, recipeId;
-  final String comment, image, created, updated;
-  final num rating;
-  final bool recommend;
-  final user, recipe;
+import 'package:recipeapp3/Features/Reviews/data/models/ReviewerUserModel.dart';
 
-  ReviewsModel({
+class ReviewsRecipeModel {
+  final int id;
+  final String title;
+  final String image;
+  final int reviewsCount;
+  final num rating;
+  final ReviewerUserModel user;
+
+  ReviewsRecipeModel({
     required this.id,
-    required this.userId,
-    required this.recipe,
-    required this.comment,
+    required this.title,
     required this.image,
-    required this.created,
+    required this.reviewsCount,
     required this.rating,
-    required this.recipeId,
-    required this.recommend,
     required this.user,
-    required this.updated,
   });
 
-  factory ReviewsModel.fromJson(Map<String, dynamic> json) {
-    return ReviewsModel(
+  factory ReviewsRecipeModel.fromJson(Map<String, dynamic> json) {
+    return ReviewsRecipeModel(
       id: json['id'],
-      userId: json['userId'],
-      recipe: json['recipe'],
-      comment: json['comment'],
-      image: json['image'],
-      created: json['created'],
+      title: json['title'],
+      image: json['photo'],
+      reviewsCount: json['reviewsCount'],
       rating: json['rating'],
-      recipeId: json['recipeId'],
-      recommend: json['recommend'],
-      user: json['user'],
-      updated: json['updated'],
+      user: ReviewerUserModel.fromJson(json['user']),
     );
   }
 }

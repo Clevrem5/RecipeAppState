@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/CategorieDetail/data/models/recipe_model.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar_action_container_button.dart';
+
+import '../../data/models/recipe_model.dart';
 
 class RecipesItemImage extends StatelessWidget {
   const RecipesItemImage({

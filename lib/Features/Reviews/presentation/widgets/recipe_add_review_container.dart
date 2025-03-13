@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
+import 'package:recipeapp3/Features/Reviews/data/models/reviews_model.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
 
 class RecipeAddReviewContainer extends StatelessWidget {
   const RecipeAddReviewContainer({
-    super.key,
+    super.key, required this.recipe,
   });
+  final ReviewsRecipeModel recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 RecipeAppText(
-                  data: "Chicken Burger",
+                  data: recipe.title,
                   color: Colors.white,
                   size: 20.sp,
                   weight: FontWeight.w500,
@@ -52,15 +54,16 @@ class RecipeAddReviewContainer extends StatelessWidget {
                   children: [
                     RecipeSvgButton(
                       svg: 'assets/icons/stars.svg',
-                      width: 11.w,
+                      width: 72.w,
                       height: 11.h,
-                      size: 12.h,
+                      sizeHeight: 12.h,
+                      sizeWidth: 72.w,
                       color: Colors.white,
                       blend: true,
                       callback: () {},
                     ),
                     RecipeAppText(
-                      data: "(456 Reviews)",
+                      data: '(${recipe.reviewsCount.toString()} views)',
                       color: Colors.white,
                       size: 11.04.sp,
                     ),
@@ -73,7 +76,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.asset(
-                        'assets/images/emily.png',
+                        'assets/images/emily.png',//rasmlar kelmadi xali
                         width: 32.19.w,
                         height: 33.24,
                         fit: BoxFit.cover,
@@ -85,16 +88,16 @@ class RecipeAddReviewContainer extends StatelessWidget {
                       spacing: 5,
                       children: [
                         RecipeAppText(
-                          data: "@Andrew-Mar",
+                          data: recipe.user.username,
                           color: Colors.white,
-                          height: true,
+                          height: 1,
                           size: 13.76.sp,
                         ),
                         RecipeAppText(
-                          data: "Andrew Martinez Chef",
+                          data: recipe.user.firstName,
                           color: Colors.white,
                           size: 13.76.sp,
-                          height: true,
+                          height: 1,
                           weight: FontWeight.w300,
                         ),
                       ],

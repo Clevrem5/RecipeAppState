@@ -1,19 +1,19 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:recipeapp3/Features/CategorieDetail/presentation/manager/category_detail_view_model.dart';
-import 'package:recipeapp3/Features/CategorieDetail/presentation/pages/Categories_detail_view.dart';
 import 'package:recipeapp3/Features/Categories/data/models/categories_model.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
-import 'package:recipeapp3/Features/Reviews/data/repositories/reviews_repository.dart';
-import 'package:recipeapp3/Features/Reviews/presentation/manager/review_viewModel.dart';
+import 'package:recipeapp3/Features/Reviews/presentation/manager/review_bloc.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/reviews_view.dart';
 
 import '../../Features/Categories/presentation/pages/categories_view.dart';
+import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
+import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Paths.reView,
+  initialLocation: Paths.getReviews(2),
   routes: [
     GoRoute(
       path: Paths.categories,
@@ -39,12 +39,18 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Paths.reView,
-      builder: (context, state) => ChangeNotifierProvider(
-        create: (context) => ReviewViewModel(
-          reviewRepo: context.read<ReviewsRepository>(),
-        ),
-        child: ReviewsPage(),
-      ),
+      builder: (context, state) => BlocProvider(
+          create: (context) => ReviewsBloc(
+                recipeRepo: context.read(),
+                recipeId: int.parse(state.pathParameters['recipeId']!),
+              ),
+          child: ReviewsPage()),
     ),
   ],
 );
+
+// builder: (context, state) => ChangeNotifierProvider(
+//   create: (context) => ReviewViewModel(
+//     reviewRepo: context.read<ReviewsRepository>(),
+//   ),
+//   child: ReviewsPage(),

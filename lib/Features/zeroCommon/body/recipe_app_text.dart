@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 
 class RecipeAppText extends StatelessWidget {
-  const RecipeAppText({
+   RecipeAppText({
     super.key,
     required this.data,
     required this.color,
     required this.size,
-    this.family = "Poppins",
     this.weight = FontWeight.w400,
-    this.line = true,
-    this.height = false,
+    this.line = 1,
+    this.height,
+    this.font = true,
   });
 
   final String data;
   final Color color;
   final double size;
-  final String family;
+
   final FontWeight weight;
-  final bool? line;
-  final bool? height;
+  final int? line;
+  final double? height;
+  bool font;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       data,
-      maxLines: line == true ? 1 : null, // ✅ To‘g‘rilangan
-      overflow: line == true ? TextOverflow.ellipsis : null, // ✅ To‘g‘rilangan
+      maxLines: line,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontFamily: family,
+        fontFamily: font == true ? 'Poppins' : "League Spartan",
         fontSize: size,
         color: color,
-        height: height == true ? 1 : null, // ✅ To‘g‘rilangan
+        height: height,
         fontWeight: weight,
       ),
     );

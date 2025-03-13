@@ -53,7 +53,7 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 24,
                     height: 22,
                     callback: () {
-                      // context.go(Paths.community);
+                      context.go(Paths.homePage);
                     },
                   ),
                   RecipeSvgButton(

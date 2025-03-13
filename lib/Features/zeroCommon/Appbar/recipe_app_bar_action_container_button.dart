@@ -10,11 +10,12 @@ class RecipeAppBarActionContainerButton extends StatelessWidget {
     required this.icon,
     this.width = 12,
     this.height = 17,
+    this.sizeHeight = 25,
   });
 
   final VoidCallback callback;
   final String icon;
-  final double width, height;
+  final double width, height,sizeHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class RecipeAppBarActionContainerButton extends StatelessWidget {
         svg: icon,
         width: width,
         height: height,
+        sizeHeight: sizeHeight,
         color: AppColors.pinkSub,
         callback: callback,
       ),

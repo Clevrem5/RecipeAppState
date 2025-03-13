@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiClient{
-  final Dio dio=Dio(BaseOptions(baseUrl:'http://192.168.8.226:8888/api/v1'));
+  final Dio dio=Dio(BaseOptions(baseUrl:'http://192.168.9.155:8888/api/v1'));
 
   Future<List<dynamic>>fetchCategories()async{
     var response=await dio.get('/categories/list');
@@ -26,14 +26,14 @@ class ApiClient{
     return response.statusCode==200?response.data:Exception("ma'lumot kelmadi");
 
   }
-  Future<List<dynamic>>fetchReviews()async{
-    var response=await dio.get('/reviews/list');
-    List<dynamic>data=response.data;
-    if (response.statusCode==200){
-      return data;
-    }else{
-      throw Exception("Ma'lumot kelmadi");
+  Future<Map<String, dynamic>> fetchRecipeForReviews(int recipeId) async {
+    var response = await dio.get('/recipes/reviews/detail/$recipeId');
+    if (response.statusCode == 200){
+      return Map<String, dynamic>.from(response.data);
+    } else{
+      throw Exception("recipes/reviews/detail/$recipeId so'rovimiz xato ketti!");
     }
   }
+
 
 }
