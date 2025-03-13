@@ -24,15 +24,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => NameCubit(),
-          child: MultiProvider(
-            providers: providers,
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              theme: AppThemes.darkTheme,
-              routerConfig: router,
-            ),
+        return MultiProvider(
+          providers: providers,
+          child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppThemes.darkTheme,
+            routerConfig: router,
           ),
         );
       },

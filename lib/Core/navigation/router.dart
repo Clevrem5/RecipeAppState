@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipeapp3/Features/Categories/data/models/categories_model.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
+import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/manager/review_bloc.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/reviews_view.dart';
@@ -24,7 +25,9 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Paths.homePage,
-      builder: (context, state) => CubitPage(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => NameCubit(),
+          child: CubitPage()),
     ),
     GoRoute(
       path: Paths.categoryDetail,
