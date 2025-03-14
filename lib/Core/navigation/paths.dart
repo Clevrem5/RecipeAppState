@@ -10,7 +10,9 @@ class Paths{
   static const String onboarding='/onboarding';
   static const String profileInfo='/profileInfo';
   static const String reView='/reviews/:recipeId';
+  static const String createReview='/create-reviews/:recipeId';
 
   static String getReviews(int recipeId)=>'/reviews/$recipeId';
+  static String getCreateReviews(int recipeId)=>'/create-reviews/$recipeId';
 
 }

@@ -35,5 +35,12 @@ class ApiClient{
     }
   }
 
+  Future<List<dynamic>>fetchReviewComment(int recipeId)async{
+    var response=await dio.get('/reviews/list?recipe=$recipeId');
+    return response.statusCode==200?response.data:Exception("Ma'lumot kelmadi");
+
+  }
+
+
 
 }
