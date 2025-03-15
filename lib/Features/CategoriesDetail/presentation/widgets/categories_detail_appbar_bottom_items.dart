@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
-import 'package:recipeapp3/Features/Categories/data/models/categories_model.dart';
+import 'package:recipeapp3/Core/data/models/categories_model.dart';
 
 class CategoriesDetailAppbarBottomItems extends StatelessWidget {
   const CategoriesDetailAppbarBottomItems({

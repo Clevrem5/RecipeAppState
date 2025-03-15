@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/categories_model.dart';
-import '../../data/repositories/categories_repository.dart';
+import '../../../../Core/data/models/categories_model.dart';
+import '../../../../Core/data/repositories/categories_repository.dart';
 
 
 class CategoriesEvent{}

@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:recipeapp3/Features/Categories/data/models/categories_model.dart';
+import 'package:recipeapp3/Core/data/models/categories_model.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/manager/create_review/create_review_bloc.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/manager/review/review_bloc.dart';
-import 'package:recipeapp3/Features/Reviews/presentation/pages/crate_review_view/create_review_view.dart';
+import 'package:recipeapp3/Features/Reviews/presentation/pages/create_review_view.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/reviews_view.dart';
 
 import '../../Features/Categories/presentation/pages/categories_view.dart';
@@ -16,7 +16,7 @@ import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_vie
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Paths.getCreateReviews(2),
+  initialLocation: Paths.getReviews( 2),
   routes: [
     GoRoute(
       path: Paths.categories,

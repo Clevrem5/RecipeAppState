@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 
 class AppThemes {
 
   static final darkTheme = ThemeData(
+    fontFamily: "Poppins",
     appBarTheme: AppBarTheme(
-
       backgroundColor: AppColors.beigeColor,
       foregroundColor: AppColors.redPinkMain,
       surfaceTintColor: Colors.transparent,

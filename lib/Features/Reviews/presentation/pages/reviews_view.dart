@@ -22,11 +22,19 @@ class ReviewsPage extends StatelessWidget {
       body: BlocBuilder<ReviewsBloc, ReviewsState>(
         builder: (context, state) {
           return switch (state.status) {
-            ReviewsStatus.idle => ListView(
+            ReviewsStatus.idle => Column(
                 children: [
-                  RecipeAddReviewContainer(recipe:state.recipeModel! ,),
+                  RecipeAddReviewContainer(recipe:state.recipeModel!,),
                   SizedBox(height: 30.h),
-                  ReviewsPageComments(),
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: state.commentModel!.length,
+                      itemBuilder:(context, index) =>  ReviewsPageComments(
+                        comment: state.commentModel![index],
+                      ),
+                    ),
+                  ),
                 ],
             ),
             ReviewsStatus.loading => Center(

@@ -34,11 +34,19 @@ class ApiClient{
       throw Exception("recipes/reviews/detail/$recipeId so'rovimiz xato ketti!");
     }
   }
-
   Future<List<dynamic>>fetchReviewComment(int recipeId)async{
     var response=await dio.get('/reviews/list?recipe=$recipeId');
+    print(' malumot ${response.data}');
     return response.statusCode==200?response.data:Exception("Ma'lumot kelmadi");
-
+  }
+  Future<dynamic>fetchRecipeDetail(int recipeId)async{
+    var response =await dio.get('/recipes/detail/$recipeId');
+    if (response.statusCode==200){
+      return response.data;
+    }
+    else {
+      return Exception('xato');
+    }
   }
 
 

@@ -4,7 +4,7 @@ import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/recipe_image_with_like.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../../../../Core/data/models/recipeModels/recipe_model.dart';
 import 'recipe_rating.dart';
 import 'recipe_time.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../Core/navigation/paths.dart';
-import '../../data/models/categories_model.dart';
+import '../../../../Core/data/models/categories_model.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({

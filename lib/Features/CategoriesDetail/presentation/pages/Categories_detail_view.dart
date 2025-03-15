@@ -6,7 +6,7 @@ import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_appbar_bottom.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../../../../Core/data/models/recipeModels/recipe_model.dart';
 import '../manager/category_detail_view_model.dart';
 import '../widgets/category_detail_info.dart';
 

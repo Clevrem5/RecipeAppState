@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/Reviews/data/models/reviews_model.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
+import '../../../../Core/data/models/reviews/models/reviews_model.dart';
 
 class RecipeAddReviewContainer extends StatelessWidget {
   const RecipeAddReviewContainer({
@@ -30,8 +30,9 @@ class RecipeAddReviewContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              'assets/images/lunch.png',
+            child: Image.network(
+              recipe.image,
+              // 'assets/images/lunch.png',
               width: 162.27.w,
               height: 163.25.h,
               fit: BoxFit.cover,
@@ -69,14 +70,15 @@ class RecipeAddReviewContainer extends StatelessWidget {
                     ),
                   ],
                 ), //star
-                Row(
+                Row(spacing: 5,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image.asset(
-                        'assets/images/emily.png',//rasmlar kelmadi xali
+                      child: Image.network(
+                        recipe.user.userPhoto,
+                        // 'assets/images/emily.png',//rasmlar kelmadi xali
                         width: 32.19.w,
                         height: 33.24,
                         fit: BoxFit.cover,
@@ -94,7 +96,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                           size: 13.76.sp,
                         ),
                         RecipeAppText(
-                          data: recipe.user.firstName,
+                          data: recipe.user.lastName,
                           color: Colors.white,
                           size: 13.76.sp,
                           height: 1,

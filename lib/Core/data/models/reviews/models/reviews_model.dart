@@ -1,4 +1,4 @@
-import 'package:recipeapp3/Features/Reviews/data/models/ReviewerUserModel.dart';
+import 'ReviewerUserModel.dart';
 
 class ReviewsRecipeModel {
   final int id;

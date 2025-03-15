@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipeapp3/Core/data/models/reviews/models/review_comment_model.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
 
 class ReviewsPageComments extends StatelessWidget {
   const ReviewsPageComments({
-    super.key,
+    super.key, required this.comment,
   });
 
+  final ReviewCommentsModel comment;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,24 +33,25 @@ class ReviewsPageComments extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      'assets/images/andrew.png',
+                    child: Image.network(
+                    comment.user.profilePhoto,
+                    // 'assets/images/andrew.png',
                       width: 46.w,
                       height: 42.h,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Row(
-                    spacing: 90,
+                    spacing: 50,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       RecipeAppText(
-                        data: '@r_joshua',
+                        data: comment.user.username,
                         color: AppColors.redPinkMain,
                         size: 15.sp,
                       ),
                       RecipeAppText(
-                        data: '(15 Mins Ago)',
+                        data: comment.created.toString(),
                         color: AppColors.redPinkMain,
                         size: 15.sp,
                       ),
@@ -58,9 +61,7 @@ class ReviewsPageComments extends StatelessWidget {
               ),
               SizedBox(height: 19.h),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                "\nPraesent fringilla eleifend purus vel dignissim. Praesent \n"
-                "urna ante, iaculis at lobortis eu.",
+                comment.comment,
                 style: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w300,

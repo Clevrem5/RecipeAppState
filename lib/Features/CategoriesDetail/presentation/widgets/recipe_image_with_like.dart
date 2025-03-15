@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar_action_container_button.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../../../../Core/data/models/recipeModels/recipe_model.dart';
 
 class RecipeImageWithLike extends StatelessWidget {
   const RecipeImageWithLike({

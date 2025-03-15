@@ -1,4 +1,4 @@
-import '../../../../Core/client.dart';
+import '../../client.dart';
 import '../models/categories_model.dart';
 
 class CategoryRepository {

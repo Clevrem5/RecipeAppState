@@ -3,7 +3,7 @@ import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/recipes_item_image.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../../../../Core/data/models/recipeModels/recipe_model.dart';
 
 class RecipesItem extends StatelessWidget {
   const RecipesItem({

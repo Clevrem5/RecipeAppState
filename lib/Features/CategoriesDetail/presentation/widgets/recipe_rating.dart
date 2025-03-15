@@ -4,7 +4,7 @@ import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
 
-import '../../data/models/recipe_model.dart';
+import '../../../../Core/data/models/recipeModels/recipe_model.dart';
 
 class RecipeRating extends StatelessWidget {
   const RecipeRating({
