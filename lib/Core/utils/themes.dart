@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'colors.dart';
 
@@ -11,7 +12,7 @@ class AppThemes {
       foregroundColor: AppColors.redPinkMain,
       surfaceTintColor: Colors.transparent,
       titleTextStyle: TextStyle(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontFamily: "Poppins",
         color: AppColors.redPinkMain,
         fontWeight: FontWeight.w600,

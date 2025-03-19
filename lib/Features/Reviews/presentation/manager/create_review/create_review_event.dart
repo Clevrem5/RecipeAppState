@@ -11,3 +11,12 @@ final class CreateReviewRate extends CreateReviewEvent {
 
   CreateReviewRate({required this.currentIndex});
 }
+
+final class CreateReviewPickImage extends CreateReviewEvent {}
+
+final class CreateReviewYesOrNot extends CreateReviewEvent {
+  final bool value;
+  CreateReviewYesOrNot({required this.value});
+}
+
+final class CreateReviewSubmit extends CreateReviewEvent{}

@@ -1,10 +1,10 @@
-class Paths{
+class Routes{
   static const String categories='/categories';
   static const  String community='/community';
   static const  String homePage='/homePage';
   static const String profile='/profile';
   static const String categoryDetail='/categoryDetail';
-  static const String recipeDetail='/recipeDetail';
+  static const String recipeDetail='/recipe-detail/:recipeId';
   static const String login='/login';
   static const String signUp='/signUp';
   static const String onboarding='/onboarding';
@@ -14,5 +14,6 @@ class Paths{
 
   static String getReviews(int recipeId)=>'/reviews/$recipeId';
   static String getCreateReviews(int recipeId)=>'/create-reviews/$recipeId';
+  static String getRecipeDetail(int recipeId)=>'/recipe-detail/$recipeId';
 
 }

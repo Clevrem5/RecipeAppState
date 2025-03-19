@@ -9,4 +9,14 @@ class RecipeUserModel {
     required this.firstName,
     required this.lastName,
   });
+
+  factory RecipeUserModel.fromJson(Map<String, dynamic> json) {
+    return RecipeUserModel(
+      id: json['id'],
+      profilePhoto: json['profilePhoto'],
+      username: json['username'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+    );
+  }
 }

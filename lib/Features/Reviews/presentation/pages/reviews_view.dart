@@ -7,6 +7,8 @@ import 'package:recipeapp3/Features/Reviews/presentation/widgets/reviews_page_co
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
 
+import '../../../../Core/utils/colors.dart';
+import '../../../zeroCommon/body/recipe_app_text.dart';
 import '../manager/review/review_state.dart';
 
 class ReviewsPage extends StatelessWidget {
@@ -26,13 +28,27 @@ class ReviewsPage extends StatelessWidget {
                 children: [
                   RecipeAddReviewContainer(recipe:state.recipeModel!,),
                   SizedBox(height: 30.h),
+
                   Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: state.commentModel!.length,
-                      itemBuilder:(context, index) =>  ReviewsPageComments(
-                        comment: state.commentModel![index],
-                      ),
+                    child: Column(
+                      spacing: 15.h,
+                      children: [
+                        RecipeAppText(
+                          data: "Comments",
+                          color: AppColors.redPinkMain,
+                          size: 15.sp,
+                          weight: FontWeight.w500,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.commentModel!.length,
+                            itemBuilder:(context, index) =>  ReviewsPageComments(
+                              comment: state.commentModel![index],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipeapp3/Core/navigation/paths.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_svg_button.dart';
+
 import '../../../../Core/data/models/reviews/models/reviews_model.dart';
 
 class RecipeAddReviewContainer extends StatelessWidget {
@@ -76,12 +79,9 @@ class RecipeAddReviewContainer extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        recipe.user.userPhoto,
-                        // 'assets/images/emily.png',//rasmlar kelmadi xali
-                        width: 32.19.w,
-                        height: 33.24,
-                        fit: BoxFit.cover,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(recipe.user.userPhoto),
+                        radius: 16,
                       ),
                     ),
                     Column(
@@ -90,7 +90,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                       spacing: 5,
                       children: [
                         RecipeAppText(
-                          data: recipe.user.username,
+                          data: '@${recipe.user.username}',
                           color: Colors.white,
                           height: 1,
                           size: 13.76.sp,
@@ -107,7 +107,9 @@ class RecipeAddReviewContainer extends StatelessWidget {
                   ],
                 ), //user
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(Routes.getCreateReviews(recipe.id));
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     alignment: Alignment.center,

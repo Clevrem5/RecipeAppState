@@ -46,7 +46,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
             callback: (){context.pop();},
           ),
         ),
-        title: Text(title),
+        title: Text(title,),
         actions: actions ??[],
         bottom: bottom,
       ),

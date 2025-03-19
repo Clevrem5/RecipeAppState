@@ -1,5 +1,6 @@
 class InstructionModel {
-  final String text, order;
+  final String text;
+  final int order;
 
   InstructionModel({
     required this.order,

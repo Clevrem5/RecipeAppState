@@ -45,7 +45,7 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 25.15,
                     height: 22,
                     callback: () {
-                      context.push(Paths.getReviews(2));
+                      context.push(Routes.getReviews(2));
                     },
                   ),
                   RecipeSvgButton(
@@ -53,7 +53,6 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 24,
                     height: 22,
                     callback: () {
-                      context.go(Paths.homePage);
                     },
                   ),
                   RecipeSvgButton(
@@ -61,7 +60,7 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 25.15,
                     height: 23,
                     callback: () {
-                      context.go(Paths.categories);
+                      context.go(Routes.categories);
                     },
                   ),
                   RecipeSvgButton(
@@ -69,7 +68,7 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 14.79,
                     height: 22,
                     callback: () {
-                      context.go(Paths.createReview);
+                      context.go(Routes.createReview);
                     },
                   ),
                 ],

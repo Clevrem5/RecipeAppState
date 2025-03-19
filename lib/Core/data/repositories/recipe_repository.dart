@@ -1,4 +1,5 @@
 import 'package:recipeapp3/Core/client.dart';
+import 'package:recipeapp3/Core/data/models/recipeModels/resipe_detail_models.dart';
 
 import '../models/recipeModels/recipe_model.dart';
 
@@ -9,6 +10,8 @@ class RecipeRepository {
 
   Map<int, List<RecipeModel>> recipeByCategory = {};
 
+  RecipeDetailModel? recipeDetail;
+
   Future<List<RecipeModel>> fetchRecipeByCategory(int categoryId) async {
     if (recipeByCategory.containsKey(categoryId) && recipeByCategory[categoryId] != null) {
       return recipeByCategory[categoryId]!;
@@ -18,4 +21,12 @@ class RecipeRepository {
     recipeByCategory[categoryId] = recipes;
     return recipes;
   }
+
+  Future<RecipeDetailModel> fetchRecipeById(int recipeId) async {
+    final rawRecipe = await client.fetchRecipeById(recipeId);
+    recipeDetail = RecipeDetailModel.fromJson(rawRecipe);
+    return recipeDetail!;
+  }
+
+
 }

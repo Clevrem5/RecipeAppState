@@ -21,7 +21,7 @@ class ReviewCommentsModel{
       image: json['image'],
       comment: json['comment'],
       id: json['id'],
-      created: DateTime.parse(json['created']), // **Muammo shu yerda edi!**
+      created: DateTime.parse(json['created']),
       rating: json['rating'],
       user: ReviewCommentUserModel.fromJson(json['user']),
     );
