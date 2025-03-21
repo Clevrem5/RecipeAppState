@@ -11,6 +11,9 @@ import 'Features/CategoriesDetail/presentation/widgets/ism.dart';
 void main() {
   runApp(
     const MyApp(),
+    /*
+     flutter run -d chrome --web-browser-flag "--disable-web-security"
+     */
   );
 }
 

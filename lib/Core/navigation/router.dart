@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:recipeapp3/Core/client.dart';
 import 'package:recipeapp3/Core/data/models/categories_model.dart';
+import 'package:recipeapp3/Core/data/repositories/trending-recipes_repository.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
@@ -11,6 +13,8 @@ import 'package:recipeapp3/Features/Reviews/presentation/manager/create_review/c
 import 'package:recipeapp3/Features/Reviews/presentation/manager/review/review_bloc.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/create_review_view.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/reviews_view.dart';
+import 'package:recipeapp3/Features/TrendingRecipe/presentation/manager/trending_recipe_bloc.dart';
+import 'package:recipeapp3/Features/TrendingRecipe/presentation/pages/trending_recipe_view.dart';
 
 import '../../Features/Categories/presentation/pages/categories_view.dart';
 import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
@@ -18,7 +22,7 @@ import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_vie
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.categories,
+  initialLocation: Routes.trendingRecipe,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -54,7 +58,9 @@ final router = GoRouter(
     GoRoute(
       path: Routes.createReview,
       builder: (context, state) => BlocProvider(
-        create: (context) => CreateReviewBloc(reviewRepo: context.read(),),
+        create: (context) => CreateReviewBloc(
+          reviewRepo: context.read(),
+        ),
         child: CreateReviewView(),
       ),
     ),
@@ -77,7 +83,17 @@ final router = GoRouter(
         ),
         child: RecipeDetailView(),
       ),
-    )
+    ),
+    GoRoute(
+      path: Routes.trendingRecipe,
+      builder: (context, state) => BlocProvider(
+        create: (context) => TrendingRecipeBloc(
+          trendRepo: context.read(),
+
+        ),
+        child: TrendingRecipeView(),
+      ),
+    ),
   ],
 );
 

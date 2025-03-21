@@ -47,7 +47,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         title: Text(title,),
-        actions: actions ??[],
+        actions: actions ??[RecipeActions()],
         bottom: bottom,
       ),
     );

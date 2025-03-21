@@ -7,6 +7,7 @@ class Routes{
   static const String recipeDetail='/recipe-detail/:recipeId';
   static const String login='/login';
   static const String signUp='/signUp';
+  static const String trendingRecipe='/trending-recipe';
   static const String onboarding='/onboarding';
   static const String profileInfo='/profileInfo';
   static const String reView='/reviews/:recipeId';
