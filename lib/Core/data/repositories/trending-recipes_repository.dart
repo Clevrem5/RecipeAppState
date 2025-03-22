@@ -12,6 +12,7 @@ class TrendingRecipesRepository{
   Future<RecipeModel>fetchTrendingMain()async{
     final rawTrendMain=await client.genericGetRequest<dynamic>('/recipes/trending-recipe');
     trendRecipe=RecipeModel.fromJson(rawTrendMain);
+    print('malumot keldi${trendRecipe!.title}');
     return trendRecipe!;
   }
 
