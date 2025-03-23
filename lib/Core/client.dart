@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 
+import '../Features/Auth/data/models/authmodel.dart';
+
 class ApiClient {
   final Dio dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'));
 
@@ -18,6 +20,29 @@ class ApiClient {
       throw Exception("categoriesda data kelmadi");
     }
   }
+  Future<String> login(String login, String password) async {
+    var response = await dio.post(
+      "/auth/login",
+      data: {"login": login, 'password': password},
+    );
+    if (response.statusCode==200){
+      var data = Map<String,String>.from(response.data);
+      return data['accessToken']!;
+    }else{
+      throw Exception("Login xato");
+    }
+  } //login
+
+  Future<bool> signUp(UserModel model) async {
+
+    var response = await dio.post(
+      '/auth/register',
+      data: model.toJson(),
+
+    );
+    print("malumot bor ${response.data}");
+    return response.statusCode == 201 ? true :false;
+  } //signUp
 
   Future<List<dynamic>> fetchCommunity(int limit, String order, bool descending) async {
     var response = await dio.get('/recipes/community/list?Limit=$limit&Order=$order&Descending=$descending');
