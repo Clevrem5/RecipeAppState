@@ -3,7 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipeapp3/Core/client.dart';
 import 'package:recipeapp3/Core/data/models/categories_model.dart';
-import 'package:recipeapp3/Core/data/repositories/trending-recipes_repository.dart';
+import 'package:recipeapp3/Features/Auth/data/repositories/auth%20repository.dart';
+import 'package:recipeapp3/Features/Auth/presentation/manager/loginView_model.dart';
+import 'package:recipeapp3/Features/Auth/presentation/manager/singupViewModel.dart';
+import 'package:recipeapp3/Features/Auth/presentation/pages/login_view.dart';
+import 'package:recipeapp3/Features/Auth/presentation/pages/signUp_view.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
@@ -89,9 +93,26 @@ final router = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => TrendingRecipeBloc(
           trendRepo: context.read(),
-
         ),
         child: TrendingRecipeView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.login,
+      builder: (context, state) => LoginPage(
+        vm: AuthViewModel(
+          repo: AuthRepository(client: ApiClient()),
+        ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.signUp,
+      builder: (context, state) => SignUpPage(
+        vm: SignUpViewModel(
+          repo: AuthRepository(
+            client: ApiClient(),
+          ),
+        ),
       ),
     ),
   ],
