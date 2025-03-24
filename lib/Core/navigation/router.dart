@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipeapp3/Core/client.dart';
 import 'package:recipeapp3/Core/data/models/categories_model.dart';
-import 'package:recipeapp3/Features/Auth/data/repositories/auth%20repository.dart';
+import 'package:recipeapp3/Core/data/repositories/auth%20repository.dart';
 import 'package:recipeapp3/Features/Auth/presentation/manager/loginView_model.dart';
 import 'package:recipeapp3/Features/Auth/presentation/manager/singupViewModel.dart';
 import 'package:recipeapp3/Features/Auth/presentation/pages/login_view.dart';
@@ -23,10 +23,12 @@ import 'package:recipeapp3/Features/TrendingRecipe/presentation/pages/trending_r
 import '../../Features/Categories/presentation/pages/categories_view.dart';
 import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
 import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_view.dart';
+import '../../Features/Topchefs/presentation/manager/top_chefs_bloc.dart';
+import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.trendingRecipe,
+  initialLocation: Routes.topChefs,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -62,9 +64,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.createReview,
       builder: (context, state) => BlocProvider(
-        create: (context) => CreateReviewBloc(
-          reviewRepo: context.read(),
-        ),
+          create: (context) => CreateReviewBloc(
+                recipeRepo: context.read(),
+                reviewRepo: context.read(),
+              ),
         child: CreateReviewView(),
       ),
     ),
@@ -86,6 +89,15 @@ final router = GoRouter(
           recipeId: int.parse(state.pathParameters['recipeId']!),
         ),
         child: RecipeDetailView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.topChefs,
+      builder: (context, state) => BlocProvider(
+        create: (context) => TopChefsBloc(
+          chefRepo: context.read(),
+        ),
+        child: TopChefsView(),
       ),
     ),
     GoRoute(

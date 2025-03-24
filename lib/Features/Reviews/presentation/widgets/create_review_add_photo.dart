@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Core/utils/colors.dart';
 import '../manager/create_review/create_review_bloc.dart';
-import '../manager/create_review/create_review_event.dart';
 import '../manager/create_review/create_review_state.dart';
 
 class CreateReviewAddPhoto extends StatelessWidget {
@@ -38,11 +37,11 @@ class CreateReviewAddPhoto extends StatelessWidget {
         SizedBox(height: 5),
         BlocBuilder<CreateReviewBloc, CreateReviewState>(
           builder: (context, state) {
-            if (state.pickImage != null) {
+            if (state.pickedImage != null) {
               return Align(
                 alignment: Alignment.centerLeft,
                 child: Image.file(
-                  state.pickImage!,
+                  state.pickedImage!,
                   width: 80,
                   height: 80,
                   fit: BoxFit.cover,

@@ -28,7 +28,6 @@ class ReviewsPage extends StatelessWidget {
                 children: [
                   RecipeAddReviewContainer(recipe:state.recipeModel!,),
                   SizedBox(height: 30.h),
-
                   Expanded(
                     child: Column(
                       spacing: 15.h,

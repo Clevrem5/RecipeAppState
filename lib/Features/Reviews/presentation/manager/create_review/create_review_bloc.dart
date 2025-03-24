@@ -1,26 +1,29 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recipeapp3/Core/data/repositories/reviews_repository.dart';
 
-import 'create_review_event.dart';
+import '../../../../../Core/data/repositories/recipe_repository.dart';
 import 'create_review_state.dart';
+part 'create_review_event.dart';
 
 class CreateReviewBloc extends Bloc<CreateReviewEvent, CreateReviewState> {
   CreateReviewBloc({
+    required RecipeRepository recipeRepo,
     required ReviewsRepository reviewRepo,
-  })  :
+  })  : _recipeRepo = recipeRepo,
         _reviewRepo = reviewRepo,
         super(CreateReviewState.initial()) {
     on<CreateReviewRate>(_onRate);
     on<CreateReviewPickImage>(_onPickImage);
-    on<CreateReviewYesOrNot>(_onRecommendOrNot);
-    on<CreateReviewLoad>(_onLoad);
+    on<CreateReviewRecommendOrNot>(_onRecommendOrNot);
+    on<CreateReviewLoading>(_onLoad);
     on<CreateReviewSubmit>(_onSubmit);
   }
 
+  final RecipeRepository _recipeRepo;
   final ReviewsRepository _reviewRepo;
   final reviewController = TextEditingController();
 
@@ -30,10 +33,10 @@ class CreateReviewBloc extends Bloc<CreateReviewEvent, CreateReviewState> {
     return super.close();
   }
 
-  Future _onLoad(CreateReviewLoad event, Emitter<CreateReviewState> emit) async {
+  Future _onLoad(CreateReviewLoading event, Emitter<CreateReviewState> emit) async {
     emit(state.copyWith(status: CreateReviewStatus.loading, recipeId: event.recipeId));
     final recipe = await _reviewRepo.fetchCreateReview(event.recipeId);
-    emit(state.copyWith(recipes: recipe, status: CreateReviewStatus.idle));
+    emit(state.copyWith(recipeModel: recipe, status: CreateReviewStatus.idle));
   }
 
   Future<void> _onRate(CreateReviewRate event, Emitter<CreateReviewState> emit) async {
@@ -50,7 +53,7 @@ class CreateReviewBloc extends Bloc<CreateReviewEvent, CreateReviewState> {
     }
   }
 
-  Future<void> _onRecommendOrNot(CreateReviewYesOrNot event, Emitter<CreateReviewState> emit) async {
+  Future<void> _onRecommendOrNot(CreateReviewRecommendOrNot event, Emitter<CreateReviewState> emit) async {
     emit(state.copyWith(doesRecommend: event.value));
   }
 
@@ -60,7 +63,7 @@ class CreateReviewBloc extends Bloc<CreateReviewEvent, CreateReviewState> {
       rating: state.currentIndex! + 1,
       comment: reviewController.text,
       recommend: state.doesRecommend!,
-      photo: state.pickImage,
+      photo: state.pickedImage,
     );
     if (successful) {
       emit(state.copyWith(status: CreateReviewStatus.submitted));

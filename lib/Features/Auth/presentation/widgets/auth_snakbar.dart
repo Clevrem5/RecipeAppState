@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipeapp3/Core/navigation/paths.dart';
 
 class AuthSnecbar extends StatelessWidget {
   const AuthSnecbar({
@@ -20,16 +22,20 @@ class AuthSnecbar extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Center(
-              child: Text(
-                'Sign up succesful!',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+            GestureDetector(
+              onTap: ()=>context.push(Routes.categories),
+              child: Center(
+                child: Text(
+                  'Sign up succesful!',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-            )
+            ),
+
           ],
         ),
       ),

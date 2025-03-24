@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 
-import '../Features/Auth/data/models/authmodel.dart';
+import 'data/models/authmodel.dart';
 
 class ApiClient {
   final Dio dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'));
@@ -99,6 +99,15 @@ class ApiClient {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<List<dynamic>> fetchTopChefsForHome({int? limit}) async {
+    final response = await dio.get('/auth/top-chefs?Limit=${limit ?? ''}');
+    if (response.statusCode == 200) {
+      return response.data as List<dynamic>;
+    } else {
+      throw Exception("/auth/top-chefs?Limit=${limit ?? ''} so'rovimiz xato ketti");
     }
   }
 }
