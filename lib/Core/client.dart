@@ -4,7 +4,7 @@ import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 import 'data/models/authmodel.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'));
+  final Dio dio = Dio(BaseOptions(baseUrl: 'http://192.168.10.249:8888/api/v1'));
 
   Future<T> genericGetRequest<T>(String paths, {Map<String, dynamic>? queryParams}) async {
     var response = await dio.get(paths, queryParameters: queryParams);
@@ -109,5 +109,16 @@ class ApiClient {
     } else {
       throw Exception("/auth/top-chefs?Limit=${limit ?? ''} so'rovimiz xato ketti");
     }
+    
+    
+  }
+  Future<List<dynamic>>fetchRecipes(int userId)async{
+    var response=await dio.get('/recipes/list?UserId=$userId');
+    if (response.statusCode==200){
+      List<dynamic>data=response.data;
+      return data;
+    }
+    throw Exception("xato bor recipe kelishida");
+
   }
 }
