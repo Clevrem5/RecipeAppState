@@ -26,7 +26,9 @@ class RecipeNumberTextField extends StatelessWidget {
       spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RecipeAppText(data: label, color: Colors.white, size: 15.sp),
+
+
+        RecipeAppText(data: label, color: Colors.white, size: 15.sp,line: 1,),
         Center(
           child: TextFormField(
             validator: validator,
@@ -55,7 +57,7 @@ class RecipeNumberTextField extends StatelessWidget {
                   ? IconButton(
                 onPressed: () {},
                 icon: SvgPicture.asset(
-                  'assets/svg/eye.svg',
+                  'assets/icons/eye.svg',
                   fit: BoxFit.cover,
                   width: 24,
                   height: 20,

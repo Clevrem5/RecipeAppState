@@ -28,12 +28,12 @@ class RecipeDetailIngredientSection extends StatelessWidget {
               RecipeAppText(
                 data: recipe.ingredients[index].amount,
                 color: AppColors.redPinkMain,
-                size: 12.sp,
+                size: 12.sp,line: 1,
               ),
             RecipeAppText(
               data: recipe.ingredients[index].name,
               color: Colors.white,
-              size: 12.sp,
+              size: 12.sp,line: 1,
             ),
           ],
         ),

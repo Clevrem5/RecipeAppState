@@ -18,7 +18,7 @@ class RecipeDataTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // TextFor(text: "Date of Birth", size: 15),
-          RecipeAppText(data: "data Of Birth", color: Colors.white, size: 15.sp),
+          RecipeAppText(data: "data Of Birth", line: 1,color: Colors.white, size: 15.sp),
           GestureDetector(
             onTap: () async {
               DateTime? pickedDate = await showDatePicker(
@@ -56,6 +56,7 @@ class RecipeDataTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
               ),
               child: RecipeAppText(
+                line: 1,
                 data: data == null ? "DD/MM/YYYY" : "${data.day}/${data.month}/${data.year}",
                 color: AppColors.beigeColor.withValues(
                   alpha: data == null ? 0.5 : 1,

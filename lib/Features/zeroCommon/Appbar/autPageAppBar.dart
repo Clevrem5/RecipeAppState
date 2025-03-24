@@ -19,7 +19,7 @@ class AuthPageAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
         centerTitle: true,
         title: RecipeAppText(
-          data: title,
+          data: title,line: 1,
           color: AppColors.redPinkMain,
           size: 20.sp,
           weight: FontWeight.w600,

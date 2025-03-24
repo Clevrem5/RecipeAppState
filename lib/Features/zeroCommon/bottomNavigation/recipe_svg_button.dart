@@ -31,14 +31,16 @@ class RecipeSvgButton extends StatelessWidget {
       child: IconButton(
         onPressed: callback,
         padding: EdgeInsets.zero,
-        icon: SvgPicture.asset(
-          svg,
-          width: width,
-          height: height,
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            color,
-            blend ? BlendMode.srcIn :BlendMode.srcOut,
+        icon: Center(
+          child: SvgPicture.asset(
+            svg,
+            width: width,
+            height: height,
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              color,
+              blend ? BlendMode.srcIn :BlendMode.srcOut,
+            ),
           ),
         ),
       ),

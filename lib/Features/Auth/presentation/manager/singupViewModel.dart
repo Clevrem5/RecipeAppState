@@ -24,13 +24,13 @@ class SignUpViewModel extends ChangeNotifier {
 
   Future<bool> signUp() async {
     final result = await _repo.signUp(
-      firstName: firstNameContr.text,
-      lastName: lastNameContr.text,
-      userName: userNameContr.text,
-      email: emailContr.text,
-      phoneNumber: phoneNumberContr.text,
+      firstName: firstNameContr.text.trim(),
+      lastName: lastNameContr.text.trim(),
+      userName: userNameContr.text.trim(),
+      email: emailContr.text.trim(),
+      phoneNumber: phoneNumberContr.text.trim(),
       dateOfBirth: selectedData ?? DateTime.now(),
-      password: passwordContr.text,
+      password: passwordContr.text.trim(),
     );
     print("malumot ketdi ${result}");
     return result;

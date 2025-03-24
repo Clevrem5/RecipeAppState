@@ -39,7 +39,7 @@ class RecipeUserFollowing extends StatelessWidget {
                     data: '@${recipe.user.username}',
                     color: AppColors.redPinkMain,
                     height: 1,
-                    size: 12.sp,
+                    size: 12.sp,line: 1,
                   ),
                   RecipeAppText(
                     data:
@@ -69,7 +69,7 @@ class RecipeUserFollowing extends StatelessWidget {
               child: RecipeAppText(
                 data: 'Following',
                 color: AppColors.pinkSub,
-                size: 14.sp,
+                size: 14.sp,line: 1,
                 weight: FontWeight.w500,
               ),
             ),

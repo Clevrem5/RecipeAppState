@@ -50,7 +50,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                 RecipeAppText(
                   data: recipe.title,
                   color: Colors.white,
-                  size: 20.sp,
+                  size: 20.sp,line: 1,
                   weight: FontWeight.w500,
                 ), //title
                 Row(
@@ -69,7 +69,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                     RecipeAppText(
                       data: '(${recipe.reviewsCount.toString()} views)',
                       color: Colors.white,
-                      size: 11.04.sp,
+                      size: 11.04.sp,line: 1,
                     ),
                   ],
                 ), //star
@@ -93,12 +93,12 @@ class RecipeAddReviewContainer extends StatelessWidget {
                           data: '@${recipe.user.username}',
                           color: Colors.white,
                           height: 1,
-                          size: 13.76.sp,
+                          size: 13.76.sp,line: 1,
                         ),
                         RecipeAppText(
                           data: recipe.user.lastName,
                           color: Colors.white,
-                          size: 13.76.sp,
+                          size: 13.76.sp,line: 1,
                           height: 1,
                           weight: FontWeight.w300,
                         ),
@@ -121,7 +121,7 @@ class RecipeAddReviewContainer extends StatelessWidget {
                   child: RecipeAppText(
                     data: "Add Review",
                     color: AppColors.redPinkMain,
-                    size: 15.sp,
+                    size: 15.sp,line: 1,
                     weight: FontWeight.w500,
                   ),
                 ), //add

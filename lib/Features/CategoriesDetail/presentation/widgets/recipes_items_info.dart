@@ -42,6 +42,7 @@ class RecipesItemsInfo extends StatelessWidget {
               color: AppColors.beigeColor,
               size: 12,
               height: 1,
+              line: 1,
             ),
             RecipeAppText(
               data: recipe.description,
@@ -62,7 +63,7 @@ class RecipesItemsInfo extends StatelessWidget {
                       RecipeAppText(
                         data: recipe.rating.toString(),
                         color: AppColors.redPinkMain,
-                        size: 12,
+                        size: 12,line: 1,
                       ),
                       RecipeSvgButton(
                         svg: 'assets/icons/star.svg',
@@ -83,7 +84,7 @@ class RecipesItemsInfo extends StatelessWidget {
                       RecipeAppText(
                         data: '${recipe.timeRequired} min',
                         color: AppColors.redPinkMain,
-                        size: 12,
+                        size: 12,line: 1,
                       ),
                     ],
                   ),

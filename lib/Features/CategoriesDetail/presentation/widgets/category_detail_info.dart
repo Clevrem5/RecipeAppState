@@ -52,6 +52,7 @@ class CategoryDetailInfo extends StatelessWidget {
                   data: recipe.title,
                   color: AppColors.beigeColor,
                   size: 12.sp,
+                  line: 1,
                 ),
                 RecipeAppText(
                   data: recipe.description,
@@ -74,8 +75,10 @@ class CategoryDetailInfo extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: RecipeImageWithLike(
-              recipe: recipe,
+            child: RecipeImageWithLike<RecipeModel>(
+              recipe: recipe, getPhotoUrl: (RecipeModel recipeModel ) {
+                return recipeModel.photo;
+              },
             ),
           ),
         ],

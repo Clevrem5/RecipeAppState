@@ -23,18 +23,19 @@ class RecipeAppBarActionContainerButton extends StatelessWidget {
     return Container(
       width: 28,
       height: 28,
-      alignment: Alignment.center,
       decoration: BoxDecoration(
         color: AppColors.pinkColor,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: RecipeSvgButton(
-        svg: icon,
-        width: width,
-        height: height,
-        sizeHeight: sizeHeight,
-        color: AppColors.pinkSub,
-        callback: callback,
+      child: Center(
+        child: RecipeSvgButton(
+          svg: icon,
+          width: width,
+          height: height,
+          sizeHeight: sizeHeight,
+          color: AppColors.pinkSub,
+          callback: callback,
+        ),
       ),
     );
   }

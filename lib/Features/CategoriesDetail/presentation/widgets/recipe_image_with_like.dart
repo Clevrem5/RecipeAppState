@@ -1,59 +1,72 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar_action_container_button.dart';
+import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_button_container.dart';
 
-import '../../../../Core/data/models/recipeModels/recipe_model.dart';
+import '../../../../Core/utils/colors.dart';
 
-class RecipeImageWithLike extends StatelessWidget {
-  const RecipeImageWithLike({
+class RecipeImageWithLike<T> extends StatefulWidget {
+  RecipeImageWithLike({
     super.key,
     required this.recipe,
+    required this.getPhotoUrl,
+    this.width,
+    this.height,
+    this.onPress = false,
+    this.shadow = true, // Default qiymat shadow=true bo‘ldi
   });
 
-  final RecipeModel recipe;
+  final double? width, height;
+  final bool shadow; // Nullable emas, default qiymatga ega
+  final T recipe;
+  bool onPress;
+  final String Function(T) getPhotoUrl;
 
   @override
+  State<RecipeImageWithLike<T>> createState() => _RecipeImageWithLikeState<T>();
+}
+
+class _RecipeImageWithLikeState<T> extends State<RecipeImageWithLike<T>> {
+  @override
   Widget build(BuildContext context) {
+    double finalWidth = widget.width ?? 169.w;
+    double finalHeight = widget.height ?? 153.h;
+
     return SizedBox(
-      width: 169.w,
-      height: 153.h,
+      width: finalWidth,
+      height: finalHeight,
       child: Stack(
         children: [
           Container(
-            width: 169.w,
-            height: 153.h,
+            width: finalWidth,
+            height: finalHeight,
             decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.beigeColor,
-                  offset: Offset(0, 1),
-                  spreadRadius: 2,
-                  blurRadius: 6,
-                ),
-              ],
+              boxShadow: widget.shadow
+                  ? [
+                      BoxShadow(
+                        color: AppColors.beigeColor,
+                        offset: const Offset(0, 1),
+                        spreadRadius: 2,
+                        blurRadius: 6,
+                      ),
+                    ]
+                  : [], // Agar shadow false bo‘lsa, bo‘sh list
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(14),
               child: CachedNetworkImage(
-                imageUrl: recipe.photo,
-                width: 169.w,
-                height: 153.h,
+                imageUrl: widget.getPhotoUrl(widget.recipe),
+                width: finalWidth,
+                height: finalHeight,
                 fit: BoxFit.cover,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),
           Positioned(
             top: 7,
             right: 8,
-            child: RecipeAppBarActionContainerButton(
-              callback: () {},
-              height: 15.h,
-              width: 16.w,
-              sizeHeight: 25,
-              icon: 'assets/icons/heart.svg',
-            ),
+            child: RecipeAppButtonContainer(widget: widget),
           ),
         ],
       ),

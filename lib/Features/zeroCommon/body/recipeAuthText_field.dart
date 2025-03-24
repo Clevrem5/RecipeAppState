@@ -22,7 +22,7 @@ class RecipeAuthTextField extends StatelessWidget {
     return Column(
       spacing: 10,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [RecipeAppText(data: label, color: Colors.white, size: 15.sp),
+      children: [RecipeAppText(data: label, color: Colors.white,line: 1, size: 15.sp),
         Center(
           child: TextFormField(
             validator: validator,

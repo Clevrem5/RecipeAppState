@@ -31,6 +31,7 @@ class CategoriesDetailAppbarBottomItems extends StatelessWidget {
           color: isSelected? Colors.white:AppColors.redPinkMain,
           data: title,
           size: 16,
+          line: 1,
           font: false,
           weight: FontWeight.w500,
         ),

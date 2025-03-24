@@ -11,8 +11,8 @@ class RecipeLogElevatedButton extends StatelessWidget {
     required this.text,
     required this.callback,
     this.size = const Size(207, 45),
-    this.color = AppColors.pinkColor,
-    this.textColor = AppColors.pinkSub,
+    this.color = AppColors.pinkSub,
+    this.textColor = AppColors.pinkColor,
   });
 
   final String text;
@@ -30,7 +30,7 @@ class RecipeLogElevatedButton extends StatelessWidget {
           backgroundColor: color,
           minimumSize: size,
         ),
-        child: RecipeAppText(data: text, color: textColor, size: 20.sp),
+        child: RecipeAppText(data: text, color: textColor, size: 20.sp,line: 1,),
       ),
     );
   }

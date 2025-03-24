@@ -115,7 +115,7 @@ class SignUpPageBody extends StatelessWidget {
                 text: "Sing Up",
                 size: Size(195, 45),
                 textColor: Colors.white,
-                color: AppColors.pinkSub,
+                color: AppColors.pinkColor,
                 callback: () async {
                   if (vm.formKey.currentState!.validate()) {
                     if (await vm.signUp() && context.mounted) {

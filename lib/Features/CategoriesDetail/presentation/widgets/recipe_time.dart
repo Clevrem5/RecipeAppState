@@ -32,6 +32,8 @@ class RecipeTime extends StatelessWidget {
           data: '${recipe.timeRequired} min',
           color: AppColors.pinkSub,
           size: 12.sp,
+          line: 1,
+          height: 1,
         ),
       ],
     );

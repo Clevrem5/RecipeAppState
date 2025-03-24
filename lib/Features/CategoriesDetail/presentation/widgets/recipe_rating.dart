@@ -24,6 +24,7 @@ class RecipeRating extends StatelessWidget {
           data: recipe.rating.toString(),
           color: AppColors.pinkSub,
           size: 12.sp,
+          line: 1,
         ),
         RecipeSvgButton(
           svg: 'assets/icons/star.svg',
