@@ -73,38 +73,42 @@ class RecipeAddReviewContainer extends StatelessWidget {
                     ),
                   ],
                 ), //star
-                Row(spacing: 5,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(recipe.user.userPhoto),
-                        radius: 16,
+                GestureDetector(
+
+                  onTap: ()=>context.push(Routes.topChefs),
+                  child: Row(spacing: 5,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(recipe.user.userPhoto),
+                          radius: 16,
+                        ),
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      spacing: 5,
-                      children: [
-                        RecipeAppText(
-                          data: '@${recipe.user.username}',
-                          color: Colors.white,
-                          height: 1,
-                          size: 13.76.sp,line: 1,
-                        ),
-                        RecipeAppText(
-                          data: recipe.user.lastName,
-                          color: Colors.white,
-                          size: 13.76.sp,line: 1,
-                          height: 1,
-                          weight: FontWeight.w300,
-                        ),
-                      ],
-                    ),
-                  ],
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        spacing: 5,
+                        children: [
+                          RecipeAppText(
+                            data: '@${recipe.user.username}',
+                            color: Colors.white,
+                            height: 1,
+                            size: 13.76.sp,line: 1,
+                          ),
+                          RecipeAppText(
+                            data: recipe.user.lastName,
+                            color: Colors.white,
+                            size: 13.76.sp,line: 1,
+                            height: 1,
+                            weight: FontWeight.w300,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ), //user
                 ElevatedButton(
                   onPressed: () {
