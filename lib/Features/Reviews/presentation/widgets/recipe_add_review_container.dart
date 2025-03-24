@@ -74,7 +74,6 @@ class RecipeAddReviewContainer extends StatelessWidget {
                   ],
                 ), //star
                 GestureDetector(
-
                   onTap: ()=>context.push(Routes.topChefs),
                   child: Row(spacing: 5,
                     crossAxisAlignment: CrossAxisAlignment.start,

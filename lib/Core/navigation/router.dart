@@ -11,6 +11,8 @@ import 'package:recipeapp3/Features/Auth/presentation/pages/signUp_view.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
+import 'package:recipeapp3/Features/Profile/presentation/manager/profile_bloc.dart';
+import 'package:recipeapp3/Features/Profile/presentation/pages/Profile_view.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/manager/recipe_detail_bloc.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/pages/recipe_detail_view.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/manager/create_review/create_review_bloc.dart';
@@ -64,10 +66,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.createReview,
       builder: (context, state) => BlocProvider(
-          create: (context) => CreateReviewBloc(
-                recipeRepo: context.read(),
-                reviewRepo: context.read(),
-              ),
+        create: (context) => CreateReviewBloc(
+          recipeRepo: context.read(),
+          reviewRepo: context.read(),
+        ),
         child: CreateReviewView(),
       ),
     ),
@@ -125,6 +127,15 @@ final router = GoRouter(
             client: ApiClient(),
           ),
         ),
+      ),
+    ),
+    GoRoute(
+      path: Routes.profile,
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileBloc(
+          repo: context.read(),
+        ),
+        child: ProfileView(),
       ),
     ),
   ],
