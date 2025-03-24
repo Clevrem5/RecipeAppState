@@ -15,7 +15,7 @@ class RecipePageTitles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RecipeAppText(
-      data: text,
+      data: text,line: 1,
       color: AppColors.redPinkMain,
       size: 20.sp,
       weight: FontWeight.w600,

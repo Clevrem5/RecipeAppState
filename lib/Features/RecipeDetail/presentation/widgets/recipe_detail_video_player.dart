@@ -44,7 +44,7 @@ class RecipeDetailVideoPlayer extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  RecipeAppText(
+                  RecipeAppText(line: 1,
                     data: recipe.title,
                     color: Colors.white,
                     size: 20.sp,
@@ -57,7 +57,7 @@ class RecipeDetailVideoPlayer extends StatelessWidget {
                         spacing: 5,
                         children: [
                           RecipeAppSvgPicture(svg: "assets/icons/star.svg"),
-                          RecipeAppText(
+                          RecipeAppText(line: 1,
                             data: recipe.rating.toString(),
                             color: Colors.white,
                             size: 12.sp,
@@ -75,7 +75,7 @@ class RecipeDetailVideoPlayer extends StatelessWidget {
                             RecipeAppText(
                               data: '78579',
                               color: Colors.white,
-                              size: 12.sp,
+                              size: 12.sp,line: 1,
                             ),
                           ],
                         ),

@@ -34,7 +34,7 @@ class CubitPage extends StatelessWidget {
                         },
                         child: RecipeAppText(
                           data: "ism",
-                          color: Colors.white,
+                          color: Colors.white,line: 1,
                           size: 14,
                         ),
                       ),
@@ -46,7 +46,7 @@ class CubitPage extends StatelessWidget {
                         child: RecipeAppText(
                           data: "ism2",
                           color: Colors.white,
-                          size: 14,
+                          size: 14,line: 1,
                         ),
                       ),
                     ],
@@ -55,7 +55,7 @@ class CubitPage extends StatelessWidget {
                 Center(
                   child: RecipeAppText(
                     data: state, // NameCubit dan state olinadi
-                    color: Colors.white,
+                    color: Colors.white,line: 1,
                     size: 15,
                   ),
                 ),

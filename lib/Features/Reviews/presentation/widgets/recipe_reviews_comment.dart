@@ -36,7 +36,7 @@ class RecipeReviewsComment extends StatelessWidget {
                 RecipeAppText(
                   data: comment.user.username,
                   color: AppColors.redPinkMain,
-                  size: 15.sp,
+                  size: 15.sp,line: 1,
                 ),
               ],
             ),
@@ -51,7 +51,7 @@ class RecipeReviewsComment extends StatelessWidget {
                   return RecipeAppText(
                     data: snapshot.data ?? 'Noma’lum sana',
                     color: AppColors.redPinkMain,
-                    size: 12.sp,
+                    size: 12.sp,line: 1,
                   );
                 }
               },

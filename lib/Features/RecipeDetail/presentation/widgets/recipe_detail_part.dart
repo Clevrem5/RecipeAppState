@@ -26,7 +26,7 @@ class RecipeDetailPart extends StatelessWidget {
             RecipeAppText(
               data: "Details",
               color: AppColors.redPinkMain,
-              size: 20.sp,
+              size: 20.sp,line: 1,
               weight: FontWeight.w600,
             ),
             Row(
@@ -44,7 +44,7 @@ class RecipeDetailPart extends StatelessWidget {
                 RecipeAppText(
                   data: '${recipe.timeRequired} min',
                   color: Colors.white,
-                  size: 12.sp,
+                  size: 12.sp,line: 1,
                 ),
               ],
             ),

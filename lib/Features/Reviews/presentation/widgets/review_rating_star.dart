@@ -47,7 +47,7 @@ class ReviewRatingStar extends StatelessWidget {
           RecipeAppText(
             data: "Your overall rating",
             color: Colors.white,
-            size: 12.sp,
+            size: 12.sp,line: 1,
           ),
         ],
       ),

@@ -36,7 +36,7 @@ class ReviewsPage extends StatelessWidget {
                         RecipeAppText(
                           data: "Comments",
                           color: AppColors.redPinkMain,
-                          size: 15.sp,
+                          size: 15.sp,line: 1,
                           weight: FontWeight.w500,
                         ),
                         Expanded(
