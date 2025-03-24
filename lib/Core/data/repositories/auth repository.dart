@@ -1,6 +1,6 @@
 
-import '../../../../Core/client.dart';
-import '../../../../Core/data/secure_storage/secure_storage.dart';
+import '../../client.dart';
+import '../secure_storage/secure_storage.dart';
 import '../models/authmodel.dart';
 
 class AuthRepository{

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:recipeapp3/Features/Reviews/presentation/widgets/create%20review/create_review_review_section.dart';
+import 'package:recipeapp3/Features/Reviews/presentation/widgets/create_review_add_photo.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/widgets/review_rating_star.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
-
 import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../zeroCommon/body/recipe_textButton.dart';
 import '../manager/create_review/create_review_bloc.dart';
 import '../manager/create_review/create_review_state.dart';
-import '../widgets/create_review_add_photo.dart';
-import '../widgets/create_review_text.dart';
+import '../widgets/create review/create_recipe_section.dart';
+import '../widgets/create review/create_review_cansel_submitSection.dart';
+import '../widgets/create review/create_review_recomment_section.dart';
 
 class CreateReviewView extends StatelessWidget {
   const CreateReviewView({super.key});
@@ -22,9 +24,7 @@ class CreateReviewView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: RecipeAppBar(
-        title: "Leave A Review",
-      ),
+      appBar: RecipeAppBar(title: "Leave A Review"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 36.w),
         child: BlocListener<CreateReviewBloc, CreateReviewState>(
@@ -88,29 +88,25 @@ class CreateReviewView extends StatelessWidget {
                 if (context.canPop()) {
                   context.pop();
                 } else {
-                  context.go(Routes.categories);
+                  context.go(Routes.reView);
                 }
               }
             }
           },
           child: Column(
             children: [
-              BlocBuilder(
-                builder: (context, state) => SizedBox(
-                  width: 356.w,
-                  height: 262.h,
-                  child: Stack(
-                    children: [],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              ReviewRatingStar(),
-              SizedBox(height: 30.h),
-              CreateReviewText(),
-              SizedBox(height: 30.h),
-              CreateReviewAddPhoto(),
-              SizedBox(height: 30.h),
+              const CreateReviewRecipeSection(),
+              SizedBox(height: 23.h),
+              const ReviewRatingStar(),
+              SizedBox(height: 28.h),
+              CreateReviewReviewSection(),
+              SizedBox(height: 10.h),
+             const CreateReviewAddPhoto(),
+              SizedBox(height: 23.h),
+              const CreateReviewRecommendSection(),
+              Spacer(),
+              const CreateReviewCancelAndSubmitSection(),
+              SizedBox(height: 120.h)
             ],
           ),
         ),
@@ -119,29 +115,3 @@ class CreateReviewView extends StatelessWidget {
     );
   }
 }
-
-/*
-ListView(
-        padding: EdgeInsets.fromLTRB(36.w, 0, 36.w, 100.h),
-        children: [
-          ReviewRatingStar(),
-          SizedBox(height: 30.h),
-          CreateReviewText(),
-          SizedBox(height: 30.h),
-          CreateReviewAddPhoto(),
-          SizedBox(height: 30.h),
-
-        ],
-      ),ListView(
-        padding: EdgeInsets.fromLTRB(36.w, 0, 36.w, 100.h),
-        children: [
-          ReviewRatingStar(),
-          SizedBox(height: 30.h),
-          CreateReviewText(),
-          SizedBox(height: 30.h),
-          CreateReviewAddPhoto(),
-          SizedBox(height: 30.h),
-
-        ],
-      ),
- */

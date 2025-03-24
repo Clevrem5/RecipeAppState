@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipeapp3/Features/Reviews/presentation/manager/create_review/create_review_event.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 
 import '../../../../Core/utils/colors.dart';
