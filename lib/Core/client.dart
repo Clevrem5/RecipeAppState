@@ -109,5 +109,16 @@ class ApiClient {
     } else {
       throw Exception("/auth/top-chefs?Limit=${limit ?? ''} so'rovimiz xato ketti");
     }
+    
+    
+  }
+  Future<List<dynamic>>fetchRecipes(int userId)async{
+    var response=await dio.get('/recipes/list?UserId=$userId');
+    if (response.statusCode==200){
+      List<dynamic>data=response.data;
+      return data;
+    }
+    throw Exception("xato bor recipe kelishida");
+
   }
 }
