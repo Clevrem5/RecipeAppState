@@ -33,6 +33,7 @@ import 'paths.dart';
 
 final router = GoRouter(
   initialLocation: Routes.categories,
+
   routes: [
     GoRoute
       (
