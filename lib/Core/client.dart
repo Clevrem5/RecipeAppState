@@ -105,7 +105,8 @@ class ApiClient {
   Future<List<dynamic>> fetchTopChefsForHome({int? limit}) async {
     final response = await dio.get('/auth/top-chefs?Limit=${limit ?? ''}');
     if (response.statusCode == 200) {
-      return response.data as List<dynamic>;
+      return response.data as
+      List<dynamic>;
     } else {
       throw Exception("/auth/top-chefs?Limit=${limit ?? ''} so'rovimiz xato ketti");
     }
