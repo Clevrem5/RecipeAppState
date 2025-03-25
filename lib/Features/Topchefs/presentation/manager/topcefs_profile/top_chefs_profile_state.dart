@@ -6,7 +6,7 @@ import '../../../../../Core/data/models/profileModel.dart';
 enum TopChefsProfileStatus { idle, loading, success, error }
 
 class TopChefsProfileState extends Equatable {
-  final List<RecipeModel>? recipes;
+  final List<RecipeModel> recipes;
   final TopChefsProfileStatus recipeStatus;
   final ProfileModel? userInfo;
   final TopChefsProfileStatus profileStatus;

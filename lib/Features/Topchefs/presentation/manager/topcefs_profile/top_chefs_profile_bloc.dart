@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:recipeapp3/Core/data/repositories/recipe_repository.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_event.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_state.dart';
 
@@ -9,7 +8,7 @@ class TopChefsProfileBloc extends Bloc<TopChefsProfileEvent, TopChefsProfileStat
   final ProfileRepository _userRepo;
 
   TopChefsProfileBloc({
-    required RecipeRepository recipeRepo,
+    // required RecipeRepository recipeRepo,
     required ProfileRepository userRepo,
   })  :
         _userRepo = userRepo,

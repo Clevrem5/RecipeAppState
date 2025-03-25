@@ -28,16 +28,17 @@ import '../../Features/Categories/presentation/pages/categories_view.dart';
 import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
 import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_view.dart';
 import '../../Features/Topchefs/presentation/manager/topcefs/top_chefs_bloc.dart';
+import '../../Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_bloc.dart';
+import '../../Features/Topchefs/presentation/pages/chefs_profile_view.dart';
 import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-
-  initialLocation: Routes.topChefs,
-=======
+initialLocation: Routes.categoryDetail,
 
   routes: [
-    GoRoute(
+    GoRoute
+      (
       path: Routes.categories,
       builder: (context, state) => ChangeNotifierProvider(
         create: (context) => CategoriesBloc(catRepo: context.read()),
@@ -109,6 +110,15 @@ final router = GoRouter(
           chefRepo: context.read(),
         ),
         child: TopChefsView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.chefsProfile,
+      builder: (context, state) => BlocProvider(
+        create: (context) => TopChefsProfileBloc(
+          userRepo: context.read(),
+        ),
+        child: TopChefsProfileDetail(),
       ),
     ),
     GoRoute(

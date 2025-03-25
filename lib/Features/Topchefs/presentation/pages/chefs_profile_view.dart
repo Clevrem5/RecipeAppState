@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,8 +7,9 @@ import '../../../../Core/utils/colors.dart';
 import '../../../zeroCommon/Appbar/recipe_app_bar.dart';
 import '../../../zeroCommon/Appbar/recipe_app_bar_action_container_button.dart';
 import '../../../zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
-import '../manager/topcefs/top_chefs_bloc.dart';
 import '../manager/topcefs/top_chefs_state.dart';
+import '../manager/topcefs_profile/top_chefs_profile_bloc.dart';
+import '../manager/topcefs_profile/top_chefs_profile_state.dart';
 import '../widgets/chefs_recipe_section.dart';
 
 class TopChefsProfileDetail extends StatelessWidget {
@@ -34,14 +36,9 @@ class TopChefsProfileDetail extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<TopChefsBloc, TopChefsState>(
+      body: BlocBuilder<TopChefsProfileBloc, TopChefsProfileState>(
         builder: (context, state) {
-          if (state.mostLikedChefsStatus == TopChefsStatus.loading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Padding(
+          return switch (state.recipeStatus) { TopChefsProfileStatus.idle => Padding(
             padding: const EdgeInsets.only(top: 10, left: 37, right: 37),
             child: ListView(
               children: [
@@ -50,13 +47,13 @@ class TopChefsProfileDetail extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        for (var chef in state.mostLikedChefs)
-                        Image.network(
-                          chef.image,
-                          width: 102.w,
-                          height: 102.h,
-                          fit: BoxFit.cover,
-                        ),
+                        // // for (var chef in state.userInfo!.hashCode)
+                        // Image.network(
+                        //   state.userInfo!.image,
+                        //   width: 102.w,
+                        //   height: 102.h,
+                        //   fit: BoxFit.cover,
+                        // ),
                         SizedBox(width: 14),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,24 +217,33 @@ class TopChefsProfileDetail extends StatelessWidget {
                     ),
                     ChefsProfileRecipes(
                       text: "Vegan Recipes",
+                      // recipe: state.recipeStatus,
                     ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    ChefsProfileRecipes(
-                      text: "Asian Heritage",
-                    ),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    ChefsProfileRecipes(
-                      text: "Guilty Pleasures",
-                    ),
+                    // SizedBox(
+                    //   height: 12.h,
+                    // ),
+                    // ChefsProfileRecipes(
+                    //   text: "Asian Heritage",
+                    // ),
+                    // SizedBox(
+                    //   height: 12.h,
+                    // ),
+                    // ChefsProfileRecipes(
+                    //   text: "Guilty Pleasures",
+                    // ),
                   ],
                 ),
               ],
             ),
-          );
+          ),
+          TopChefsProfileStatus.loading => Center(
+            child: CircularProgressIndicator(),
+          ),
+          TopChefsProfileStatus.success => Text("sdecerc"),
+          TopChefsProfileStatus.error => Center(
+            child: Text("errrrrorrrr"),
+          )
+          };
         },
       ),
       // body:
