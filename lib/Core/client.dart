@@ -4,7 +4,7 @@ import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 import 'data/models/authmodel.dart';
 
 class ApiClient {
-  final Dio dio = Dio(BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'));
+  final Dio dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));// doim shu jpoyni o'zgartirib push qililar nolga sababini bilasizlar!!!
 
   Future<T> genericGetRequest<T>(String paths, {Map<String, dynamic>? queryParams}) async {
     var response = await dio.get(paths, queryParameters: queryParams);
