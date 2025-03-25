@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:recipeapp3/Core/client.dart';
 import 'package:recipeapp3/Core/data/repositories/categories_repository.dart';
+import 'package:recipeapp3/Core/data/repositories/notification_repository.dart';
 import 'package:recipeapp3/Core/data/repositories/profile_repository.dart';
 import 'package:recipeapp3/Core/data/repositories/reviews_repository.dart';
 import 'package:recipeapp3/Core/data/repositories/top_chefs_repository.dart';
@@ -46,6 +47,11 @@ final List<SingleChildWidget> providers = [
   ),
   Provider(
     create: (context) => ProfileRepository(
+      client: context.read(),
+    ),
+  ),
+  Provider(
+    create: (context) => NotificationRepository(
       client: context.read(),
     ),
   ),
