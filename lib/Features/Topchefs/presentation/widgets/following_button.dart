@@ -9,8 +9,8 @@ import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_detail_view_svg_picture.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
 import '../../../../Core/utils/colors.dart';
-import '../manager/top_chefs_bloc.dart';
-import '../manager/top_chefs_state.dart';
+import '../manager/topcefs/top_chefs_bloc.dart';
+import '../manager/topcefs/top_chefs_state.dart';
 
 class FollowingButton extends StatelessWidget {
   const FollowingButton({

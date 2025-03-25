@@ -7,7 +7,7 @@ import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_reverse
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/share_buttuon.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import '../../../../Core/utils/colors.dart';
-import '../manager/top_chefs_state.dart';
+import '../manager/topcefs/top_chefs_state.dart';
 
 class TopChefsLiked extends StatelessWidget {
  TopChefsLiked({

@@ -8,8 +8,8 @@ import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar_action_cont
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
 import '../../../../Core/utils/colors.dart';
-import '../manager/top_chefs_bloc.dart';
-import '../manager/top_chefs_state.dart';
+import '../manager/topcefs/top_chefs_bloc.dart';
+import '../manager/topcefs/top_chefs_state.dart';
 import '../widgets/top_chefs_liked.dart';
 
 class TopChefsView extends StatelessWidget {

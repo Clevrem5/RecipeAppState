@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipeapp3/Features/Topchefs/presentation/manager/top_chefs_state.dart';
+import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs/top_chefs_state.dart';
 
-import '../../../../Core/data/repositories/top_chefs_repository.dart';
+import '../../../../../Core/data/repositories/top_chefs_repository.dart';
 part 'top_chefs_event.dart';
 class TopChefsBloc extends Bloc<TopChefsEvent, TopChefsState> {
   TopChefsBloc({required ChefRepository chefRepo})

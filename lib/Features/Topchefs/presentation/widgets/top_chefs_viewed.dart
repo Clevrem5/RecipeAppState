@@ -7,7 +7,7 @@ import '../../../../Core/data/models/topchefs_model.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../CategoriesDetail/presentation/widgets/recipe_image_with_like.dart';
 import '../../../zeroCommon/body/recipe_app_text.dart';
-import '../manager/top_chefs_state.dart';
+import '../manager/topcefs/top_chefs_state.dart';
 import 'following_button.dart';
 
 class TopChefsViewed extends StatelessWidget {

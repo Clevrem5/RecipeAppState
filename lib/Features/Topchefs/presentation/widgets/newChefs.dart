@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipeapp3/Features/Topchefs/presentation/manager/top_chefs_state.dart';
+import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs/top_chefs_state.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_reverse_rating.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/share_buttuon.dart';
 
