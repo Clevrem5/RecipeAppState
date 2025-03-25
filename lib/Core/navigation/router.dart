@@ -30,7 +30,7 @@ import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.topChefs,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.categories,
