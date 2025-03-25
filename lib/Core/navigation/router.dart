@@ -31,8 +31,9 @@ import '../../Features/Topchefs/presentation/manager/top_chefs_bloc.dart';
 import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
-final router = GoRouter(
+final router = GoRouter
   initialLocation: Routes.categories,
+
   routes: [
     GoRoute(
       path: Routes.categories,
