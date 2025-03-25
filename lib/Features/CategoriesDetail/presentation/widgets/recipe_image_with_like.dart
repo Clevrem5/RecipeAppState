@@ -66,7 +66,7 @@ class _RecipeImageWithLikeState<T> extends State<RecipeImageWithLike<T>> {
           Positioned(
             top: 7,
             right: 8,
-            child: RecipeAppButtonContainer(widget: widget),
+            child: RecipeAppButtonContainer(onPress: true),
           ),
         ],
       ),

@@ -7,7 +7,7 @@ class RecipeAppText extends StatelessWidget {
     required this.color,
     required this.size,
     this.weight = FontWeight.w400,
-     this.line=1 ,
+     this.line,
     this.height,
     this.font = true, // Default qiymat true
   });

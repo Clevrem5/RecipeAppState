@@ -9,10 +9,10 @@ import '../../../Core/utils/colors.dart';
 class RecipeAppButtonContainer extends StatelessWidget {
   const RecipeAppButtonContainer({
     super.key,
-    required this.widget,
+    this.onPress=true,
   });
 
-  final RecipeImageWithLike widget;
+  final bool onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class RecipeAppButtonContainer extends StatelessWidget {
         width: 28.w,
         height: 28.h,
         decoration: BoxDecoration(
-          color: widget.onPress ? AppColors.redPinkMain : AppColors.pinkColor,
+          color: onPress ? AppColors.redPinkMain : AppColors.pinkColor,
           borderRadius: BorderRadius.circular(14),
         ),
         child: Center(
@@ -30,7 +30,7 @@ class RecipeAppButtonContainer extends StatelessWidget {
             svg: 'assets/icons/heart.svg',
             width: 16.w,
             height: 15.h,
-            color: widget.onPress ? Colors.white : AppColors.pinkSub,
+            color: onPress ? Colors.white : AppColors.pinkSub,
           ),
         ),
       ),
