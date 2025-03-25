@@ -11,6 +11,8 @@ import 'package:recipeapp3/Features/Auth/presentation/pages/signUp_view.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
+import 'package:recipeapp3/Features/Notification/presentation/manager/notifications_bloc.dart';
+import 'package:recipeapp3/Features/Notification/presentation/pages/notifications_view.dart';
 import 'package:recipeapp3/Features/Profile/presentation/manager/profile_bloc.dart';
 import 'package:recipeapp3/Features/Profile/presentation/pages/Profile_view.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/manager/recipe_detail_bloc.dart';
@@ -30,7 +32,7 @@ import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.topChefs,
+  initialLocation: Routes.categories,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -69,7 +71,11 @@ final router = GoRouter(
         create: (context) => CreateReviewBloc(
           recipeRepo: context.read(),
           reviewRepo: context.read(),
-        ),
+        )..add(
+            CreateReviewLoading(
+              recipeId: int.parse(state.pathParameters['recipeId']!),
+            ),
+          ),
         child: CreateReviewView(),
       ),
     ),
@@ -137,6 +143,16 @@ final router = GoRouter(
         ),
         child: ProfileView(),
       ),
+    ),
+    GoRoute(
+      path: Routes.notifications,
+      builder: (context, state) => BlocProvider(
+        create: (context) => NotificationsBloc(
+          repo: context.read(),
+        ),
+        child: NotificationsView(),
+      ),
+
     ),
   ],
 );
