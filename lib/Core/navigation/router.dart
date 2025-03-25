@@ -27,12 +27,14 @@ import 'package:recipeapp3/Features/TrendingRecipe/presentation/pages/trending_r
 import '../../Features/Categories/presentation/pages/categories_view.dart';
 import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
 import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_view.dart';
-import '../../Features/Topchefs/presentation/manager/top_chefs_bloc.dart';
+import '../../Features/Topchefs/presentation/manager/topcefs/top_chefs_bloc.dart';
 import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.categories,
+
+  initialLocation: Routes.topChefs,
+=======
 
   routes: [
     GoRoute(
