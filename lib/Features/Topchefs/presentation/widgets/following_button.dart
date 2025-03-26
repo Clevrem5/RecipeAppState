@@ -15,21 +15,30 @@ import '../manager/topcefs/top_chefs_state.dart';
 class FollowingButton extends StatelessWidget {
   const FollowingButton({
     super.key,
+    this.size = 8,
+    this.backColor = AppColors.redPinkMain,
+    this.textColor = Colors.white,
+    this.text = "Following",
   });
+
+  final double size;
+  final String text;
+  final Color backColor, textColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 2.w),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: AppColors.redPinkMain,
+        color: backColor,
         borderRadius: BorderRadius.circular(14),
       ),
       child: RecipeAppText(
-        data: "Following",
-        color: Colors.white,
-        size: 8.sp,
+        data: text,
+        color: textColor,
+        size: size.sp,
       ),
     );
   }
