@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Core/data/models/topchefs_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/recipe_image_with_like.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/following_button.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_reverse_rating.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/share_buttuon.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
+import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../manager/topcefs/top_chefs_state.dart';
 
 class TopChefsLiked extends StatelessWidget {
- TopChefsLiked({
+  TopChefsLiked({
     super.key,
     required this.state,
   });
+
   TopChefsState state;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class TopChefsLiked extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 GestureDetector(
-                  onTap:(){
-                    // context.push(Routes.profileInfo);
-          },
+                  onTap: () {
+                    context.push(Routes.getChefsProfile(chef.id));
+                  },
                   child: Container(
                     width: 160.w,
                     height: 76.h,

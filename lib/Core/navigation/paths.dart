@@ -14,10 +14,11 @@ class Routes{
   static const String notifications='/notifications';
   static const String reView='/reviews/:recipeId';
   static const String createReview='/create-reviews/:recipeId';
-  static const String chefsProfile='/chefs_profile';
+  static const String chefsProfile='/chefs_profile/:userId';
 
   static String getReviews(int recipeId)=>'/reviews/$recipeId';
   static String getCreateReviews(int recipeId)=>'/create-reviews/$recipeId';
   static String getRecipeDetail(int recipeId)=>'/recipe-detail/$recipeId';
+  static String getChefsProfile(int userId)=>'/chefs_profile/$userId';
 
 }
