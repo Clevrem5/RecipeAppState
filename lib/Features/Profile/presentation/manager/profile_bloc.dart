@@ -19,7 +19,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       recipeStatus: ProfileStatus.loading,
       profileStatus: ProfileStatus.loading,
     );
-    final profile = await _repo.fetchUserInfo();
+    final profile = await _repo.fetchUserInfo(event.userId);
     state.copyWith(profile: profile, profileStatus: ProfileStatus.success);
     final recipes = await _repo.fetchProfileRecipes(event.userId);
     state.copyWith(recipes: recipes, recipeStatus: ProfileStatus.success);

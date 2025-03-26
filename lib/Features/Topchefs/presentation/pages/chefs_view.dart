@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/newChefs.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/top_chefs_viewed.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/Appbar/recipe_app_bar_action_container_button.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
+import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../manager/topcefs/top_chefs_bloc.dart';
 import '../manager/topcefs/top_chefs_state.dart';
@@ -21,19 +23,6 @@ class TopChefsView extends StatelessWidget {
       extendBody: true,
       appBar: RecipeAppBar(
         title: "Top Chef",
-        actions: [
-          RecipeAppBarActionContainerButton(
-            callback: () {},
-            icon: "assets/icons/notification.svg",
-          ),
-          SizedBox(
-            width: 5,
-          ),
-          RecipeAppBarActionContainerButton(
-            callback: () {},
-            icon: "assets/icons/search.svg",
-          ),
-        ],
       ),
       body: BlocBuilder<TopChefsBloc, TopChefsState>(
         builder: (context, state) {
