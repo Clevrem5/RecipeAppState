@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_reverse_rating.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/share_buttuon.dart';
 
 import '../../../../Core/data/models/topchefs_model.dart';
+import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../CategoriesDetail/presentation/widgets/recipe_image_with_like.dart';
 import '../../../zeroCommon/body/recipe_app_text.dart';
@@ -27,7 +29,7 @@ class TopChefsViewed extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap:(){
-                    // context.push(Routes.profileInfo);
+                    context.push(Routes.chefsProfile);
                   },
                   child: Container(
                     width: 160.w,
