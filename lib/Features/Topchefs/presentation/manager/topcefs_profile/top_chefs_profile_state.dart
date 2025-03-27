@@ -23,7 +23,7 @@ class TopChefsProfileState extends Equatable {
       profileStatus: TopChefsProfileStatus.loading,
       recipes: [],
       userInfo: null,
-      recipeStatus: TopChefsProfileStatus.idle,
+      recipeStatus: TopChefsProfileStatus.loading,
     );
   }
 
@@ -35,8 +35,8 @@ class TopChefsProfileState extends Equatable {
   }) {
     return TopChefsProfileState(
       profileStatus: profileStatus ?? this.profileStatus,
-      recipes: recipes ?? this.recipes,
-      userInfo: profile ?? this.userInfo,
+      recipes: recipe ?? recipes,
+      userInfo: profile ?? userInfo,
       recipeStatus: recipeStatus ?? this.recipeStatus,
     );
   }

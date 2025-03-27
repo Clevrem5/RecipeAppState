@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:recipeapp3/Core/client.dart';
 import 'package:recipeapp3/Core/data/models/categories_model.dart';
 import 'package:recipeapp3/Core/data/repositories/auth%20repository.dart';
-import 'package:recipeapp3/Core/data/repositories/profile_repository.dart';
 import 'package:recipeapp3/Features/Auth/presentation/manager/loginView_model.dart';
 import 'package:recipeapp3/Features/Auth/presentation/manager/singupViewModel.dart';
 import 'package:recipeapp3/Features/Auth/presentation/pages/login_view.dart';
@@ -23,7 +22,6 @@ import 'package:recipeapp3/Features/Reviews/presentation/manager/review/review_b
 import 'package:recipeapp3/Features/Reviews/presentation/pages/create_review_view.dart';
 import 'package:recipeapp3/Features/Reviews/presentation/pages/reviews_view.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_bloc.dart';
-import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_event.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/pages/chefs_profile_view.dart';
 import 'package:recipeapp3/Features/TrendingRecipe/presentation/manager/trending_recipe_bloc.dart';
 import 'package:recipeapp3/Features/TrendingRecipe/presentation/pages/trending_recipe_view.dart';
@@ -37,9 +35,10 @@ import 'paths.dart';
 
 final router = GoRouter(
 
-initialLocation: Routes.notifications,
-=======
-  
+  initialLocation: Routes.getChefsProfile(2),
+
+
+
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -153,12 +152,12 @@ initialLocation: Routes.notifications,
     GoRoute(
       path: Routes.chefsProfile,
       builder: (context, state) => BlocProvider(
-        create: (context) => TopChefsProfileBloc(userRepo: context.read<ProfileRepository>())
-          ..add(
-            TopChefsProfileLoading(
-              userId: int.parse(state.pathParameters['userId']!),
-            ),
-          ),
+        create: (context) {
+          return TopChefsProfileBloc(
+          userRepo: context.read(),
+userId: int.parse(state.pathParameters['UserId']!),
+);
+},
         child: TopChefsProfileDetail(),
       ),
     ),
