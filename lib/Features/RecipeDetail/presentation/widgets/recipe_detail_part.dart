@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/data/models/recipeModels/resipe_detail_models.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/RecipeDetail/presentation/manager/recipeDetail_view_Model.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 
 import '../../../zeroCommon/bottomNavigation/recipe_svg_button.dart';
