@@ -12,6 +12,8 @@ import 'package:recipeapp3/Features/Auth/presentation/pages/signUp_view.dart';
 import 'package:recipeapp3/Features/Categories/presentation/manager/categories_View_model.dart';
 import 'package:recipeapp3/Features/CategoriesDetail/presentation/widgets/ism.dart';
 import 'package:recipeapp3/Features/HomePage/presentation/pages/cubit.dart';
+import 'package:recipeapp3/Features/MyRecipes/presentation/manager/my-recipes_bloc.dart';
+import 'package:recipeapp3/Features/MyRecipes/presentation/pages/my-recipes_view.dart';
 import 'package:recipeapp3/Features/Notification/presentation/manager/notifications_bloc.dart';
 import 'package:recipeapp3/Features/Notification/presentation/pages/notifications_view.dart';
 import 'package:recipeapp3/Features/Profile/presentation/manager/profile_bloc.dart';
@@ -37,7 +39,7 @@ import 'paths.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.categories,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -184,6 +186,17 @@ final router = GoRouter(
           );
         },
         child: TopChefsProfileDetail(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.myRecipes,
+      builder: (context, state) => BlocProvider(
+        create: (context) {
+          return MyRecipesBloc(
+            repo: context.read(),
+          );
+        },
+        child: MyRecipesView(),
       ),
     ),
   ],

@@ -12,6 +12,7 @@ class Routes{
   static const String profileInfo='/profileInfo';
   static const String topChefs='/top-chefs';
   static const String notifications='/notifications';
+  static const String myRecipes='/myRecipes';
   static const String reView='/reviews/:recipeId';
   static const String createReview='/create-reviews/:recipeId';
   static const String chefsProfile='/chefs_profile/:UserId';
