@@ -11,6 +11,7 @@ class RecipeRepository {
   Map<int, List<RecipeModel>> recipeByCategory = {};
 
   RecipeDetailModel? recipeDetail;
+  List<RecipeModel> myRecipes=[];
 
   Future<List<RecipeModel>> fetchRecipeByCategory(int categoryId) async {
     if (recipeByCategory.containsKey(categoryId) && recipeByCategory[categoryId] != null) {
@@ -26,6 +27,12 @@ class RecipeRepository {
     final rawRecipe = await client.fetchRecipeById(recipeId);
     recipeDetail = RecipeDetailModel.fromJson(rawRecipe);
     return recipeDetail!;
+  }
+
+  Future<List<RecipeModel>> fetchMyRecipes()async{
+    final rawMyRecipe=await client.genericGetRequest<List<dynamic>>('/recipes/my-recipes');
+    myRecipes=rawMyRecipe.map((e)=>RecipeModel.fromJson(e)).toList();
+    return myRecipes;
   }
 
 
