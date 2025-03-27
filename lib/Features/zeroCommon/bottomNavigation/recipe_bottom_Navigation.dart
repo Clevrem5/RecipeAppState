@@ -29,7 +29,7 @@ class RecipeBottomNavigation extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 35, left: 40),
+            padding: const EdgeInsets.only(bottom: 35, left: 55),
             child: Container(
               width: 280,
               height: 56,

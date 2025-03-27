@@ -36,10 +36,12 @@ import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
 import 'paths.dart';
 
 final router = GoRouter(
+
 initialLocation: Routes.notifications,
+=======
+  
   routes: [
-    GoRoute
-      (
+    GoRoute(
       path: Routes.categories,
       builder: (context, state) => ChangeNotifierProvider(
         create: (context) => CategoriesBloc(catRepo: context.read()),
@@ -84,7 +86,6 @@ initialLocation: Routes.notifications,
         child: CreateReviewView(),
       ),
     ),
-
     GoRoute(
       path: Routes.recipeDetail,
       builder: (context, state) => BlocProvider(
@@ -148,18 +149,18 @@ initialLocation: Routes.notifications,
         ),
         child: NotificationsView(),
       ),
-
     ),
     GoRoute(
       path: Routes.chefsProfile,
       builder: (context, state) => BlocProvider(
-        create: (context) => TopChefsProfileBloc(
-          userRepo: context.read<ProfileRepository>()
-        )..add(TopChefsProfileLoading(userId: 2)),
+        create: (context) => TopChefsProfileBloc(userRepo: context.read<ProfileRepository>())
+          ..add(
+            TopChefsProfileLoading(
+              userId: int.parse(state.pathParameters['userId']!),
+            ),
+          ),
         child: TopChefsProfileDetail(),
       ),
-
     ),
   ],
 );
-

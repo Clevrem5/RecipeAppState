@@ -29,7 +29,7 @@ class TopChefsViewed extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap:(){
-                    context.push(Routes.chefsProfile);
+                    context.push(Routes.getChefsProfile(chef.id));
                   },
                   child: Container(
                     width: 160.w,

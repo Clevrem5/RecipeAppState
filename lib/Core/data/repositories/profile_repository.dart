@@ -10,8 +10,8 @@ class ProfileRepository {
   List<RecipeModel> myRecipes = [];
   ProfileModel? aboutUser;
 
-  Future<ProfileModel> fetchUserInfo(int id) async {
-    var rawUser = await client.genericGetRequest("/auth/details/$id");
+  Future<ProfileModel> fetchUserInfo(int userId) async {
+    var rawUser = await client.genericGetRequest("/auth/details/$userId");
     aboutUser = ProfileModel.fromJson(rawUser);
     return aboutUser!;
   }
