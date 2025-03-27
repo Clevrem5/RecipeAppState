@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ import '../../main.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-  navigatorKey:navigatorKey ,
+  navigatorKey: navigatorKey,
   initialLocation: Routes.categories,
   routes: [
     GoRoute(
@@ -51,13 +52,25 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.categoryDetail,
-      builder: (context, state) => ChangeNotifierProvider(
-        create: (context) => CategoryDetailViewModel(
-          recipeRepo: context.read(),
-          catRepo: context.read(),
-          selected: state.extra as CategoryModel,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        reverseTransitionDuration: Duration(seconds: 2),
+        child: ChangeNotifierProvider(
+          create: (context) => CategoryDetailViewModel(
+            recipeRepo: context.read(),
+            catRepo: context.read(),
+            selected: state.extra as CategoryModel,
+          ),
+          child: CategoriesDetailView(),
         ),
-        child: CategoriesDetailView(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final curve=CurvedAnimation(parent: animation, curve: Curves.bounceInOut);
+          return ScaleTransition(
+          scale: Tween<double>(begin: 0, end: 1).animate(curve),
+          child: child,
+        );
+        },
+        
       ),
     ),
     GoRoute(
@@ -104,11 +117,25 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.trendingRecipe,
-      builder: (context, state) => BlocProvider(
-        create: (context) => TrendingRecipeBloc(
-          trendRepo: context.read(),
+      pageBuilder: (context, state) => CustomTransitionPage(
+        transitionDuration: Duration(seconds: 2),
+        reverseTransitionDuration: Duration(seconds: 2),
+        child: BlocProvider(
+          create: (context) => TrendingRecipeBloc(
+            trendRepo: context.read(),
+          ),
+          child: TrendingRecipeView(),
         ),
-        child: TrendingRecipeView(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final curve = CurvedAnimation(parent: animation, curve: Curves.bounceIn);
+          return SlideTransition(
+            position: Tween<Offset>(
+              begin: Offset(0, 1),
+              end: Offset(0, 0),
+            ).animate(curve),
+            child: child,
+          );
+        },
       ),
     ),
     GoRoute(
