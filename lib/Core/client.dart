@@ -2,11 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 
 import 'data/models/authmodel.dart';
+import 'interseptor.dart';
 
 class ApiClient {
-
-  final Dio dio = Dio(BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'));// doim shu joyni o'zgartirib push qililar nolga sababini bilasizlar!!!
-
+  final Dio dio = Dio(
+    BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'),
+  )..interceptors.add(AuthInterceptor()); // doim shu joyni o'zgartirib push qililar nolga sababini bilasizlar!!!
 
   Future<T> genericGetRequest<T>(String paths, {Map<String, dynamic>? queryParams}) async {
     var response = await dio.get(paths, queryParameters: queryParams);
@@ -22,28 +23,27 @@ class ApiClient {
       throw Exception("categoriesda data kelmadi");
     }
   }
+
   Future<String> login(String login, String password) async {
     var response = await dio.post(
       "/auth/login",
       data: {"login": login, 'password': password},
     );
-    if (response.statusCode==200){
-      var data = Map<String,String>.from(response.data);
+    if (response.statusCode == 200) {
+      var data = Map<String, String>.from(response.data);
       return data['accessToken']!;
-    }else{
+    } else {
       throw Exception("Login xato");
     }
   } //login
 
   Future<bool> signUp(UserModel model) async {
-
     var response = await dio.post(
       '/auth/register',
       data: model.toJson(),
-
     );
     print("malumot bor ${response.data}");
-    return response.statusCode == 201 ? true :false;
+    return response.statusCode == 201 ? true : false;
   } //signUp
 
   Future<List<dynamic>> fetchCommunity(int limit, String order, bool descending) async {
@@ -111,16 +111,14 @@ class ApiClient {
     } else {
       throw Exception("/auth/top-chefs?Limit=${limit ?? ''} so'rovimiz xato ketti");
     }
-    
-    
   }
-  Future<List<dynamic>>fetchRecipes(int userId)async{
-    var response=await dio.get('/recipes/list?UserId=$userId');
-    if (response.statusCode==200){
-      List<dynamic>data=response.data;
+
+  Future<List<dynamic>> fetchRecipes(int userId) async {
+    var response = await dio.get('/recipes/list?UserId=$userId');
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data;
       return data;
     }
     throw Exception("xato bor recipe kelishida");
-
   }
 }
