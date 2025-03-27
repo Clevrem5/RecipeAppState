@@ -98,7 +98,6 @@ class TopChefsProfileDetail extends StatelessWidget {
                   Center(child: LinearProgressIndicator()),
                 TopChefsProfileStatus.success => Expanded(
                   child: GridView.builder(
-                    // key: ValueKey<List<RecipeModel>>(state.recipes!),
                     padding: EdgeInsets.only(bottom:  150.h,top: 20.h),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
