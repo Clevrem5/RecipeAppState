@@ -10,9 +10,11 @@ class TopChefsProfileBloc extends Bloc<TopChefsProfileEvent, TopChefsProfileStat
 
   TopChefsProfileBloc({
     required ProfileRepository userRepo,
+    required int userId,
   })  : _userRepo = userRepo,
         super(TopChefsProfileState.initial()) {
     on<TopChefsProfileLoading>(_load);
+    add(TopChefsProfileLoading(userId: userId));
   }
 
   Future<void> _load(TopChefsProfileLoading event, Emitter<TopChefsProfileState> emit) async {
