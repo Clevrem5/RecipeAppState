@@ -31,14 +31,12 @@ import '../../Features/CategoriesDetail/presentation/manager/category_detail_vie
 import '../../Features/CategoriesDetail/presentation/pages/Categories_detail_view.dart';
 import '../../Features/Topchefs/presentation/manager/topcefs/top_chefs_bloc.dart';
 import '../../Features/Topchefs/presentation/pages/chefs_view.dart';
+import '../../main.dart';
 import 'paths.dart';
 
 final router = GoRouter(
-
-  initialLocation: Routes.getChefsProfile(2),
-
-
-
+  navigatorKey:navigatorKey ,
+  initialLocation: Routes.categories,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -154,10 +152,10 @@ final router = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) {
           return TopChefsProfileBloc(
-          userRepo: context.read(),
-userId: int.parse(state.pathParameters['UserId']!),
-);
-},
+            userRepo: context.read(),
+            userId: int.parse(state.pathParameters['UserId']!),
+          );
+        },
         child: TopChefsProfileDetail(),
       ),
     ),

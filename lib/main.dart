@@ -9,7 +9,7 @@ import 'Core/dependency/provider.dart';
 import 'Core/navigation/router.dart';
 import 'Core/utils/themes.dart';
 import 'Features/CategoriesDetail/presentation/widgets/ism.dart';
-
+final navigatorKey=GlobalKey<NavigatorState>();
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await initializeDateFormatting('flutter pub global run intl_utils:generateuz_UZ', ''); // Ikkinchi argument berilmaydi yoki null bo‘lishi kerak
