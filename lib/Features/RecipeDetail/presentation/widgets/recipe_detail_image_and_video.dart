@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/data/models/recipeModels/resipe_detail_models.dart';
-import 'package:recipeapp3/Features/RecipeDetail/presentation/manager/recipeDetail_view_Model.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/widgets/recipe_detail_video_button.dart';
 
 class RecipeDetailImageAndVideo extends StatelessWidget {

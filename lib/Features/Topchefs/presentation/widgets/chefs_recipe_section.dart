@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipeapp3/Core/data/models/recipeModels/recipe_model.dart';
 
 import '../../../../Core/utils/colors.dart';
 
 class ChefsProfileRecipes extends StatelessWidget {
   const ChefsProfileRecipes({
-    super.key, required this.text,
+    super.key, required this.text,  this.recipe,
   });
   final String text;
+  final RecipeModel? recipe;
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +51,8 @@ class ChefsProfileRecipes extends StatelessWidget {
           shadowColor: Colors.black.withOpacity(1),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              "assets/osh.jpg",
+            child: Image.network(
+              recipe!.photo,
               width: double.infinity.w,
               height: 103.h,
               fit: BoxFit.cover,

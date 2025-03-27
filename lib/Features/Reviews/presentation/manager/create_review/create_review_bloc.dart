@@ -23,6 +23,7 @@ class CreateReviewBloc extends Bloc<CreateReviewEvent, CreateReviewState> {
     on<CreateReviewSubmit>(_onSubmit);
   }
 
+  // ignore: unused_field
   final RecipeRepository _recipeRepo;
   final ReviewsRepository _reviewRepo;
   final reviewController = TextEditingController();
