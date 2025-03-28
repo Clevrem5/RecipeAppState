@@ -6,7 +6,7 @@ import 'interseptor.dart';
 
 class ApiClient {
   final Dio dio = Dio(
-    BaseOptions(baseUrl: 'http://192.168.9.155:8888/api/v1'),
+    BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'),
   )..interceptors.add(AuthInterceptor()); // doim shu joyni o'zgartirib push qililar nolga sababini bilasizlar!!!
 
   Future<T> genericGetRequest<T>(String paths, {Map<String, dynamic>? queryParams}) async {
