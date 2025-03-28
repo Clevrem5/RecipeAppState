@@ -6,7 +6,10 @@ import 'package:recipeapp3/Core/utils/colors.dart';
 class RecipeDetailVideoButton extends StatelessWidget {
   const RecipeDetailVideoButton({
     super.key,
+    this.alpha = 1,
   });
+
+  final double alpha;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +21,17 @@ class RecipeDetailVideoButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(37),
-          color: AppColors.redPinkMain,
+          color: AppColors.redPinkMain.withValues(alpha: alpha),
         ),
         child: SvgPicture.asset(
           "assets/icons/video.svg",
           width: 30.w,
           height: 40.h,
           fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            Colors.white.withValues(alpha: alpha),
+            BlendMode.srcIn,
+          ),
         ),
       ),
     );
