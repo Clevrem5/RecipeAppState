@@ -29,7 +29,7 @@ class RecipeActions extends StatelessWidget {
           icon: svg,
         ),
         RecipeAppBarActionContainerButton(
-          callback: callback2 ?? () {},
+          callback: callback2 ?? () {Routes.createRecipe;},
           icon: svg2,
           height: 19,
         ),

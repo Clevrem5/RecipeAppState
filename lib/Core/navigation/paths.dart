@@ -2,7 +2,7 @@ class Routes{
   static const String categories='/categories';
   static const  String community='/community';
   static const  String homePage='/homePage';
-  static const String profile='/profile';
+  static const String profile='/profile/:userId';
   static const String categoryDetail='/categoryDetail';
   static const String recipeDetail='/recipe-detail/:recipeId';
   static const String login='/login';
@@ -22,5 +22,6 @@ class Routes{
   static String getCreateReviews(int recipeId)=>'/create-reviews/$recipeId';
   static String getRecipeDetail(int recipeId)=>'/recipe-detail/$recipeId';
   static String getChefsProfile(int userId)=>'/chefs_profile/$userId';
+  static String getProfile(int userId)=>'/profile/$userId';
 
 }

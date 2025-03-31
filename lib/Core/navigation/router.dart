@@ -18,6 +18,7 @@ import 'package:recipeapp3/Features/MyRecipes/presentation/pages/my-recipes_view
 import 'package:recipeapp3/Features/Notification/presentation/manager/notifications_bloc.dart';
 import 'package:recipeapp3/Features/Notification/presentation/pages/notifications_view.dart';
 import 'package:recipeapp3/Features/Profile/presentation/manager/profile_bloc.dart';
+import 'package:recipeapp3/Features/Profile/presentation/manager/profile_event.dart';
 import 'package:recipeapp3/Features/Profile/presentation/pages/Profile_view.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/manager/recipe_detail_bloc.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/pages/recipe_detail_view.dart';
@@ -40,7 +41,7 @@ import 'paths.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.createRecipe,
+  initialLocation: Routes.login,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -170,6 +171,7 @@ final router = GoRouter(
       path: Routes.profile,
       builder: (context, state) => BlocProvider(
         create: (context) => ProfileBloc(
+          userId: int.parse(state.pathParameters['userId']!),
           repo: context.read(),
         ),
         child: ProfileView(),

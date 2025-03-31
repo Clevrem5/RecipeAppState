@@ -21,8 +21,8 @@ class ProfileState extends Equatable {
     return ProfileState(
       profileModel: null,
       recipes: [],
-      recipeStatus: ProfileStatus.idle,
-      profileStatus: ProfileStatus.idle,
+      recipeStatus: ProfileStatus.loading,
+      profileStatus: ProfileStatus.loading,
     );
   }
 
@@ -33,7 +33,7 @@ class ProfileState extends Equatable {
     ProfileStatus? recipeStatus,
   }) {
     return ProfileState(
-      profileModel: profile ?? this.profileModel,
+      profileModel: profile ?? profileModel,
       recipes: recipes ?? this.recipes,
       recipeStatus: recipeStatus ?? this.recipeStatus,
       profileStatus: profileStatus ?? this.profileStatus,

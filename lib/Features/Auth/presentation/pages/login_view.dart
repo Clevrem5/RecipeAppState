@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                     text: "Login",
                     callback: () async {
                       if (await vm.submitForm() && context.mounted) {
-                        context.push(Routes.myRecipes);
+                        context.push(Routes.myRecipes,);
                       }
                     }),
                 RecipeLogElevatedButton(

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
-import 'package:recipeapp3/Features/Create_Recipe_Clevrem/pages/recipe_e_leveted_button.dart';
+import 'package:recipeapp3/Features/Create_Recipe_Clevrem/pages/recipe_app_detele_container.dart';
 import 'package:recipeapp3/Features/RecipeDetail/presentation/widgets/recipe_detail_video_button.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipeAuthText_field.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
+import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_three_dot_button.dart';
+import 'package:recipeapp3/Features/zeroCommon/body/recipe_e_leveted_button.dart';
 import 'package:recipeapp3/Features/zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
 
 import '../../zeroCommon/Appbar/recipe_app_bar.dart';
+import '../../zeroCommon/body/recipe_text_field_simple.dart';
 
 class CreateRecipeView extends StatelessWidget {
-   CreateRecipeView({super.key});
+  CreateRecipeView({super.key});
 
-  final contr=TextEditingController();
+  final contr = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +26,23 @@ class CreateRecipeView extends StatelessWidget {
         actions: [],
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(19.2.w, 10.h, 19.w, 500.h),
+        padding: EdgeInsets.only(bottom: 500.h, left: 36.w, right: 36.w),
         children: [
           Row(
-            spacing: 3.6,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RecipeElevatedButton(text: "Publish", callback: () {}),
-              RecipeElevatedButton(text: "Delete", callback: () {}),
+              RecipeElevatedButton(
+                text: "Publish",
+                callback: () {},
+                widthSize: 177,
+                heightSize: 27,
+              ),
+              RecipeElevatedButton(
+                text: "Delete",
+                callback: () {},
+                widthSize: 177,
+                heightSize: 27,
+              ),
             ],
           ),
           SizedBox(height: 10.h),
@@ -45,8 +58,11 @@ class CreateRecipeView extends StatelessWidget {
             child: Column(
               spacing: 15.h,
               children: [
-                RecipeDetailVideoButton(
-                  alpha: 0.45,
+                GestureDetector(
+                  onTap: () {},
+                  child: RecipeDetailVideoButton(
+                    alpha: 0.45,
+                  ),
                 ),
                 RecipeAppText(
                   data: "Add video recipe",
@@ -60,7 +76,9 @@ class CreateRecipeView extends StatelessWidget {
           SizedBox(height: 10.h),
           Form(
             key: GlobalKey<FormState>(),
-            child: Column(spacing: 15.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 15.h,
               children: [
                 RecipeAuthTextField(
                   label: "Title",
@@ -80,7 +98,92 @@ class CreateRecipeView extends StatelessWidget {
                   validator: (value) => null,
                   controller: contr,
                 ),
-
+                RecipeAppText(
+                  data: "Ingredients",
+                  color: Colors.white,
+                  size: 15.sp,
+                  weight: FontWeight.w500,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      spacing: 5.w,
+                      children: [
+                        RecipeAppThreeDotButton(callback: () {}),
+                        RecipeTextFieldSimple(
+                          validator: (value) => null,
+                          controller: contr,
+                          width: 70.w,
+                          height: 41.h,
+                          hint: "Amt",
+                        ),
+                        RecipeTextFieldSimple(
+                          validator: (value) => null,
+                          controller: contr,
+                          width: 224.25.w,
+                          height: 41.h,
+                          hint: "Ingredients",
+                          isCenter: false,
+                        ),
+                        RecipeAppDeteleContainer(
+                          callBack: () {},
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 30.h),
+                    Center(
+                      child: RecipeElevatedButton(
+                        text: "+ Add Ingredients",
+                        callback: () {},
+                        backColor: AppColors.redPinkMain,
+                        widthSize: 211,
+                        heightSize: 35,
+                        textColor: AppColors.beigeColor,
+                      ),
+                    )
+                  ],
+                ),
+                RecipeAppText(
+                  data: "Instructions",
+                  color: AppColors.pinkColor,
+                  size: 15.sp,
+                  weight: FontWeight.w500,
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RecipeAppThreeDotButton(
+                          callback: () {},
+                        ),
+                        RecipeTextFieldSimple(
+                          validator: (value) => null,
+                          controller: contr,
+                          width: 301.25.w,
+                          height: 52.h,
+                          isCenter: false,
+                          hint: "Instructions 1",
+                        ),
+                        RecipeAppDeteleContainer(
+                          callBack: () {},
+                        ),
+                      ],
+                    ),
+                    SizedBox(height:30.h),
+                    Center(
+                      child: RecipeElevatedButton(
+                        text: "+ Add Instructions",
+                        callback: () {},
+                        backColor: AppColors.redPinkMain,
+                        widthSize: 211,
+                        heightSize: 35,
+                        textColor: AppColors.beigeColor,
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
