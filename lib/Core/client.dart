@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:recipeapp3/Core/data/models/profileModel.dart';
 import 'package:recipeapp3/Core/data/models/reviews/create_reviewModel.dart';
 
 import 'data/models/authmodel.dart';
@@ -6,7 +7,7 @@ import 'interseptor.dart';
 
 class ApiClient {
   final Dio dio = Dio(
-    BaseOptions(baseUrl: 'http://0.0.0.0:8888/api/v1'),
+    BaseOptions(baseUrl: 'http://192.168.185.103:8888/api/v1'),
   )..interceptors.add(AuthInterceptor()); // doim shu joyni o'zgartirib push qililar nolga sababini bilasizlar!!!
 
   Future<T> genericGetRequest<T>(String paths, {Map<String, dynamic>? queryParams}) async {
@@ -114,6 +115,14 @@ class ApiClient {
   }
 
   Future<List<dynamic>> fetchRecipes(int userId) async {
+    var response = await dio.get('/recipes/list?UserId=$userId');
+    if (response.statusCode == 200) {
+      List<dynamic> data = response.data;
+      return data;
+    }
+    throw Exception("xato bor recipe kelishida");
+  }
+  Future<List<dynamic>> fetchProfileRecipes(ProfileModel userId) async {
     var response = await dio.get('/recipes/list?UserId=$userId');
     if (response.statusCode == 200) {
       List<dynamic> data = response.data;

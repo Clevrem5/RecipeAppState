@@ -1,6 +1,8 @@
-void main() {
+void main(List<String>args) {
   Clevrem<num>(5, 6);
   Clevrem<String>("Bekzod", "Clevrem");
+  String a="a'lochi";
+  print(a);
 }
 
 T? Clevrem<T>(T? value, T? value2) {

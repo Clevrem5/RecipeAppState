@@ -69,7 +69,7 @@ class RecipeBottomNavigation extends StatelessWidget {
                     width: 14.79,
                     height: 22,
                     callback: () {
-                      context.go(Routes.profile);
+                      context.go(Routes.createRecipe);
                     },
                   ),
                 ],

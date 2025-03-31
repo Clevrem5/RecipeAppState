@@ -30,7 +30,7 @@ class RecipeAuthTextField extends StatelessWidget {
             textAlignVertical: TextAlignVertical.center,
             style: TextStyle(
               color: AppColors.beigeColor,
-              fontSize: 16,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w500,
             ),
             decoration: InputDecoration(
@@ -46,7 +46,7 @@ class RecipeAuthTextField extends StatelessWidget {
                 fontSize: 14,
                 color: AppColors.beigeColor.withValues(alpha: 0.45),
               ),
-              contentPadding: EdgeInsets.symmetric(horizontal: 36),
+              contentPadding: EdgeInsets.symmetric(horizontal: 36.sp),
               // errorText: "Banzai!",
             ),
           ),

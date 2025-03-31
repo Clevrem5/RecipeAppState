@@ -5,13 +5,15 @@ import 'package:recipeapp3/Features/Profile/presentation/manager/profile_state.d
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepository _repo;
+  final int userId;
 
-  ProfileBloc({required ProfileRepository repo})
+  ProfileBloc({required ProfileRepository repo,required this.userId,})
       : _repo = repo,
         super(
           ProfileState.initial(),
         ) {
     on<ProfileLoading>(_load);
+    add(ProfileLoading());
   }
 
   Future<void> _load(ProfileLoading event, Emitter<ProfileState> emit) async {
@@ -19,9 +21,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       recipeStatus: ProfileStatus.loading,
       profileStatus: ProfileStatus.loading,
     );
-    final profile = await _repo.fetchUserInfo(event.userId);
+    final profile = await _repo.fetchUserInfo(userId);
     state.copyWith(profile: profile, profileStatus: ProfileStatus.success);
-    final recipes = await _repo.fetchProfileRecipes(event.userId);
+    final recipes = await _repo.fetchProfileRecipes(userId);
     state.copyWith(recipes: recipes, recipeStatus: ProfileStatus.success);
   }
 }
