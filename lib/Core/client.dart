@@ -130,4 +130,20 @@ class ApiClient {
     }
     throw Exception("xato bor recipe kelishida");
   }
+  Future<List<dynamic>>fetchFollowers(int id)async{
+    final response=await dio.get('/auth/followers/$id');
+    if (response.statusCode==200){
+      return List.from(response.data);
+    }else{
+      throw Exception('followers xato ketdi');
+    }
+  }
+  Future<List<dynamic>>fetchFollowings(int id)async{
+    final response=await dio.get('/auth/followings/$id');
+    if (response.statusCode==200){
+      return List.from(response.data);
+    }else{
+      throw Exception('followings xato ketdi');
+    }
+  }
 }

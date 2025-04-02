@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipeapp3/Features/UserFollow/presentation/manager/following_event.dart';
+import 'package:recipeapp3/Features/UserFollow/presentation/manager/following_state.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_text_field_simple.dart';
 
 import '../../../../Core/utils/colors.dart';
@@ -30,19 +33,29 @@ class FollowingPart extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Expanded(
-            child: ListView(
-              padding: EdgeInsets.only(bottom: 200.h),
-              children: List.generate(
-                10,
-                (index) => SizedBox.fromSize(
-                  size: Size(0, 75.h),
-                  child: Column(
-                    children: [
-                      FollowingPartUsers(),
-                    ],
+            child: BlocBuilder<FollowBloc, FollowState>(
+              builder: (context, state) => switch(state.followingStatus) {
+                null => throw UnimplementedError(),
+                FollowStatus.idle => Center(child: Text("loaded")),
+                FollowStatus.success => ListView(
+                  padding: EdgeInsets.only(bottom: 200.h),
+                  children: List.generate(
+                    state.followings!.length,
+                        (index) => SizedBox.fromSize(
+                      size: Size(0, 75.h),
+                      child: Column(
+                        children: [
+                          FollowingPartUsers(
+                            followings: state.followings![index],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                FollowStatus.loading => Center(child: LinearProgressIndicator(),),
+                FollowStatus.error => Center(child: Text("Something went wrong...")),
+              },
             ),
           ),
         ],

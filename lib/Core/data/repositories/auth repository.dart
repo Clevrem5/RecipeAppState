@@ -1,23 +1,22 @@
-
 import '../../client.dart';
 import '../secure_storage/secure_storage.dart';
 import '../models/authmodel.dart';
 
-class AuthRepository{
+class AuthRepository {
   final ApiClient client;
+
   AuthRepository({required this.client});
 
   String? jwt;
 
-  Future<bool>login(String login,String password)async{
-    jwt=await client.login(login, password);
+  Future<bool> login(String login, String password) async {
+    jwt = await client.login(login, password);
     await SecureStorage.deleteCredentials();
     await SecureStorage.deleteToken();
     await SecureStorage.saveCredentials(login, password);
     await SecureStorage.saveToken(jwt!);
     return true;
   }
-
 
   Future<bool> signUp({
     required String firstName,
@@ -36,25 +35,20 @@ class AuthRepository{
         email: email,
         password: password,
         dateOfBirth: dateOfBirth,
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber
       ),
     );
     return result;
   }
 
-
-
-  Future<void>logout()async{
+  Future<void> logout() async {
     await SecureStorage.deleteCredentials();
     await SecureStorage.deleteToken();
   }
 
-
-
-
-  Future<bool>refreshToken()async{
-    var credentials=await SecureStorage.getCredentials();
-    if (credentials['login']==null||credentials['password']==null){
+  Future<bool> refreshToken() async {
+    var credentials = await SecureStorage.getCredentials();
+    if (credentials['login'] == null || credentials['password'] == null) {
       return false;
     }
     jwt = await client.login(credentials['login']!, credentials['password']!);
@@ -62,9 +56,4 @@ class AuthRepository{
     SecureStorage.saveToken(jwt!);
     return true;
   }
-
-
-
-
-
 }
