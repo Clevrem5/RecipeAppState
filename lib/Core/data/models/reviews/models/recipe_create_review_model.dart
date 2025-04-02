@@ -11,7 +11,7 @@ class RecipeCreateReviewModel {
   factory RecipeCreateReviewModel.fromJson(Map<String, dynamic> json) {
     return RecipeCreateReviewModel(
       id: json['id'],
-      image: json['image'],
+      image: json['photo'],
       title: json['title'],
     );
   }

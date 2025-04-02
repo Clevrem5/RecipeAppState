@@ -9,6 +9,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.toolbarHeight = 72,
     this.bottom,
+    this.isCenter=true,
   });
 
   final String title;
@@ -16,6 +17,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
 
   final List<Widget>? actions;
+  final  bool isCenter;
 
   @override
   Size get preferredSize {
@@ -31,7 +33,7 @@ class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
       child: AppBar(
         leadingWidth: 30,
-        centerTitle: true,
+        centerTitle: isCenter,
         leading: RecipeAppBarVector(),
         title: Text(
           title,

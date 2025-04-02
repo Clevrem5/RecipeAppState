@@ -66,7 +66,10 @@ class TopChefsProfileDetail extends StatelessWidget {
                                 line: 2,
                                 weight: FontWeight.w300,
                               ),
-                              RecipeAppFollowButton(),
+                              RecipeAppFollowButton(
+                                callback: (){},
+
+                              ),
                             ],
                           ),
                         ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Core/data/models/recipeModels/resipe_detail_models.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_detail_view_svg_picture.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
+
+import '../../../../Core/navigation/paths.dart';
 
 class RecipeUserFollowing extends StatelessWidget {
   const RecipeUserFollowing({
@@ -15,17 +18,23 @@ class RecipeUserFollowing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisSize: MainAxisSize.min,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           spacing: 10,
           children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                recipe.user.profilePhoto,
+            GestureDetector(
+              onTap: () => context.push(
+                Routes.getChefsProfile(recipe.user.id),
               ),
-              radius: 23,
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  recipe.user.profilePhoto,
+                ),
+                radius: 23,
+              ),
             ),
             SizedBox(
               width: 155.3.w,
@@ -38,11 +47,11 @@ class RecipeUserFollowing extends StatelessWidget {
                     data: '@${recipe.user.username}',
                     color: AppColors.redPinkMain,
                     height: 1,
-                    size: 12.sp,line: 1,
+                    size: 12.sp,
+                    line: 1,
                   ),
                   RecipeAppText(
-                    data:
-                        "${recipe.user.firstName} ${recipe.user.lastName}",
+                    data: "${recipe.user.firstName} ${recipe.user.lastName}",
                     color: Colors.white,
                     size: 13.sp,
                     line: 1,
@@ -68,7 +77,8 @@ class RecipeUserFollowing extends StatelessWidget {
               child: RecipeAppText(
                 data: 'Following',
                 color: AppColors.pinkSub,
-                size: 14.sp,line: 1,
+                size: 14.sp,
+                line: 1,
                 weight: FontWeight.w500,
               ),
             ),

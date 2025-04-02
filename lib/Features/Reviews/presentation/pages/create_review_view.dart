@@ -88,12 +88,13 @@ class CreateReviewView extends StatelessWidget {
                 if (context.canPop()) {
                   context.pop();
                 } else {
-                  context.go(Routes.reView);
+                  context.go(Routes.getReviews(state.recipeModel!.id));
                 }
               }
             }
           },
-          child: Column(
+          child: ListView(
+            padding:EdgeInsets.only(bottom: 150,),
             children: [
               const CreateReviewRecipeSection(),
               SizedBox(height: 23.h),
