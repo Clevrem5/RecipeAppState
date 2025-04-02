@@ -40,6 +40,7 @@ class ReviewsPage extends StatelessWidget {
                         ),
                         Expanded(
                           child: ListView.builder(
+                            padding: EdgeInsets.only(bottom: 200),
                             shrinkWrap: true,
                             itemCount: state.commentModel!.length,
                             itemBuilder:(context, index) =>  ReviewsPageComments(

@@ -10,7 +10,8 @@ class RecipeTextFieldSimple extends StatelessWidget {
     required this.width,
     required this.height,
     required this.hint,
-    this.isCenter=true
+    this.isCenter=true,
+    this.textColor,
   });
 
   final TextEditingController controller;
@@ -19,6 +20,8 @@ class RecipeTextFieldSimple extends StatelessWidget {
   final double width, height;
   final String hint;
   final bool isCenter;
+  final Color? textColor;
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class RecipeTextFieldSimple extends StatelessWidget {
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
             hintText: hint,
             hintStyle: TextStyle(
-              color: AppColors.beigeColor.withValues(alpha: 0.50),
+              color: textColor ?? AppColors.beigeColor.withValues(alpha: 0.50),
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,
             ),

@@ -7,24 +7,42 @@ import '../../../../Core/utils/colors.dart';
 class RecipeAppFollowButton extends StatelessWidget {
   const RecipeAppFollowButton({
     super.key,
+    this.width = 81,
+    this.height = 20,
+    this.backColor = AppColors.pinkColor,
+    this.textColor = AppColors.pinkSub,
+    this.fontSize = 11,
+    this.text = "Following",
+    this.weight = FontWeight.w400,
+    required this.callback,
   });
+
+  final double width, height, fontSize;
+  final String text;
+  final Color backColor, textColor;
+  final FontWeight weight;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 81.w,
-      height: 20.h,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: AppColors.pinkColor,
-        borderRadius: BorderRadius.circular(
-          40,
+    return GestureDetector(
+      onTap: callback,
+      child: Container(
+        width: width.w,
+        height: height.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: backColor,
+          borderRadius: BorderRadius.circular(
+            width / 2,
+          ),
         ),
-      ),
-      child: RecipeAppText(
-        data: "Following",
-        color: AppColors.pinkSub,
-        size: 11.sp,
+        child: RecipeAppText(
+          data: text,
+          color: textColor,
+          size: fontSize.sp,
+          weight: weight,
+        ),
       ),
     );
   }

@@ -29,10 +29,11 @@ class RecipeTextButtonContainer extends StatelessWidget {
     return Container(
       width: containerWidth,
       height: containerHeight,
-      padding: EdgeInsets.symmetric(horizontal: containerPaddingH.w),
+
+      padding: EdgeInsets.symmetric(horizontal: containerPaddingH),
       decoration: BoxDecoration(
         color: containerColor,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(containerWidth!/2),
       ),
       alignment: Alignment.center,
       child: TextButton(

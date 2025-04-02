@@ -13,6 +13,7 @@ class Routes{
   static const String topChefs='/top-chefs';
   static const String notifications='/notifications';
   static const String myRecipes='/myRecipes';
+  static const String following='/following';
   static const String createRecipe='/createRecipe';
   static const String reView='/reviews/:recipeId';
   static const String createReview='/create-reviews/:recipeId';

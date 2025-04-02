@@ -13,11 +13,17 @@ class RecipeAppThreeDotButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: callback,
-      child: RecipeAppSvgPicture(
-        svg: "assets/icons/threedot.svg",
-        width: 4.w,
-        height: 15.h,
-        color: AppColors.redPinkMain,
+      child: SizedBox(
+        width: 7.w,
+        height: 18.h,
+        child: Center(
+          child: RecipeAppSvgPicture(
+            svg: "assets/icons/threedot.svg",
+            width: 4.w,
+            height: 15.h,
+            color: AppColors.redPinkMain,
+          ),
+        ),
       ),
     );
   }

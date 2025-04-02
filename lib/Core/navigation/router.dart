@@ -30,6 +30,7 @@ import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profil
 import 'package:recipeapp3/Features/Topchefs/presentation/pages/chefs_profile_view.dart';
 import 'package:recipeapp3/Features/TrendingRecipe/presentation/manager/trending_recipe_bloc.dart';
 import 'package:recipeapp3/Features/TrendingRecipe/presentation/pages/trending_recipe_view.dart';
+import 'package:recipeapp3/Features/UserFollow/presentation/pages/following_view.dart';
 
 import '../../Features/Categories/presentation/pages/categories_view.dart';
 import '../../Features/CategoriesDetail/presentation/manager/category_detail_view_model.dart';
@@ -41,7 +42,7 @@ import 'paths.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.login,
+  initialLocation: Routes.notifications,
   routes: [
     GoRoute(
       path: Routes.categories,
@@ -223,6 +224,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.createRecipe,
       builder: (context, state) => CreateRecipeView(),
-    )
+    ),
+    GoRoute(
+      path: Routes.following,
+      builder: (context, state) => FollowingView(),
+    ),
   ],
 );
