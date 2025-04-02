@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Features/Profile/presentation/widgets/recipe_userAppBar_info.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_bloc.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_state.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/profile_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
+import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../CategoriesDetail/presentation/widgets/category_detail_info.dart';
 import '../../../zeroCommon/bottomNavigation/recipe_bottom_Navigation.dart';
@@ -40,10 +42,15 @@ class TopChefsProfileDetail extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       spacing: 15.w,
                       children: [
-                        RecipeCircleImage(
-                          image: user!.image,
-                          width: 102.w,
-                          height: 97.h,
+                        GestureDetector(
+                          onTap: () => context.push(
+                            Routes.getFollow(user.id),
+                          ),
+                          child: RecipeCircleImage(
+                            image: user!.image,
+                            width: 102.w,
+                            height: 97.h,
+                          ),
                         ),
                         SizedBox(
                           width: 204.w,
@@ -68,7 +75,6 @@ class TopChefsProfileDetail extends StatelessWidget {
                               ),
                               RecipeAppFollowButton(
                                 callback: (){},
-
                               ),
                             ],
                           ),

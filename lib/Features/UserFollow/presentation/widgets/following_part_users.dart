@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipeapp3/Core/data/models/topchefs_model.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_app_follow_button.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_three_dot_button.dart';
@@ -10,7 +11,10 @@ import '../../../../Core/utils/colors.dart';
 class FollowingPartUsers extends StatelessWidget {
   const FollowingPartUsers({
     super.key,
+    required this.followings,
   });
+
+  final TopChefModel followings;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,8 @@ class FollowingPartUsers extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
-          child: Image.asset(
-            'assets/images/lunch.png',
+          child: Image.network(
+            followings.image,
             width: 61.w,
             height: 63.h,
             fit: BoxFit.cover,
@@ -35,12 +39,12 @@ class FollowingPartUsers extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RecipeAppText(
-                data: "@neil",
+                data: "@${followings.username}",
                 color: AppColors.redPinkMain,
                 size: 12.sp,
               ),
               RecipeAppText(
-                data: "Emily",
+                data: "${followings.firstName} ${followings.lastName}",
                 color: Colors.white,
                 size: 14.sp,
                 weight: FontWeight.w300,
@@ -79,12 +83,12 @@ class FollowingPartUsers extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Row(
-                            spacing:10.w,
+                            spacing: 10.w,
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(30),
-                                child: Image.asset(
-                                  'assets/images/lunch.png',
+                                child: Image.network(
+                                  followings.image,
                                   width: 64.w,
                                   height: 63.h,
                                   fit: BoxFit.cover,
@@ -92,7 +96,7 @@ class FollowingPartUsers extends StatelessWidget {
                               ),
                               Center(
                                 child: RecipeAppText(
-                                  data: "@neil ",
+                                  data: "@${followings.username}",
                                   color: AppColors.redPinkMain,
                                   size: 15.sp,
                                   weight: FontWeight.w500,

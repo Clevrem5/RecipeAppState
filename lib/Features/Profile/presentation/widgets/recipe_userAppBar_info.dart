@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipeapp3/Core/data/models/profileModel.dart';
+import 'package:recipeapp3/Core/navigation/paths.dart';
 import 'package:recipeapp3/Core/utils/colors.dart';
 
 import 'RecipeUserInform.dart';
@@ -32,10 +34,15 @@ class AppbarInfo extends StatelessWidget {
             number: user.recipeCount,
             label: "Recipes",
           ),
-          Container(
-            width: 1,
-            height: 26,
-            color: AppColors.pinkSub,
+          GestureDetector(
+            onTap: () => context.push(
+              Routes.getFollow(user.id),
+            ),
+            child: Container(
+              width: 1,
+              height: 26,
+              color: AppColors.pinkSub,
+            ),
           ),
           AppbarInform(
             number: user.followingCount,

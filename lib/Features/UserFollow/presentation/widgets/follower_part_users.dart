@@ -3,13 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_textButton.dart';
 
+import '../../../../Core/data/models/topchefs_model.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../Topchefs/presentation/widgets/recipe_app_follow_button.dart';
 
 class FollowerPartUsers extends StatelessWidget {
   const FollowerPartUsers({
     super.key,
+    required this.followers,
   });
+
+  final TopChefModel followers;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +22,8 @@ class FollowerPartUsers extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
-          child: Image.asset(
-            'assets/images/lunch.png',
+          child: Image.network(
+            followers.image,
             width: 61.w,
             height: 63.h,
             fit: BoxFit.cover,
@@ -34,12 +38,12 @@ class FollowerPartUsers extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RecipeAppText(
-                data: "@sara",
+                data: "@${followers.username}",
                 color: AppColors.redPinkMain,
                 size: 12.sp,
               ),
               RecipeAppText(
-                data: "Sara",
+                data: "${followers.firstName} ${followers.lastName}",
                 color: Colors.white,
                 size: 14.sp,
                 weight: FontWeight.w300,
