@@ -12,6 +12,7 @@ class ProfileRepository {
   ProfileModel? aboutUser;
   List<TopChefModel> followers=[];
   List<TopChefModel> followings=[];
+  int? followUser;
 
   Future<ProfileModel> fetchUserInfo(int userId) async {
     var rawUser = await client.genericGetRequest("/auth/details/$userId");
@@ -35,4 +36,9 @@ class ProfileRepository {
     return followings;
 
   }
+  Future<int> fetchFollowUser(int userId) async {
+    final followUser = await client.fetchFollowId(userId);
+    return followUser;
+    }
+
 }

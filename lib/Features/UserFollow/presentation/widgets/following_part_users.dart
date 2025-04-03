@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Core/data/models/topchefs_model.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_app_follow_button.dart';
+import 'package:recipeapp3/Features/UserFollow/presentation/manager/following_state.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_three_dot_button.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_textButton.dart';
 
 import '../../../../Core/utils/colors.dart';
+import '../manager/following_event.dart';
 
 class FollowingPartUsers extends StatelessWidget {
   const FollowingPartUsers({
     super.key,
     required this.followings,
+    required this.state,
   });
 
   final TopChefModel followings;
+  final FollowState state;
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +62,11 @@ class FollowingPartUsers extends StatelessWidget {
           spacing: 8.w,
           children: [
             RecipeAppFollowButton(
-              callback: () {},
-              text: "Following",
+              callback:  (){
+                if (state.followUserStatus == FollowStatus.loading) return;
+                context.read<FollowBloc>().add(FollowUser(userId: followings.id ));
+              },
+              text: state.followUserStatus == FollowStatus.success ? 'Followed':'Following',
               fontSize: 15,
               weight: FontWeight.w500,
               width: 109.09,

@@ -1,6 +1,11 @@
-class ProfileModel {
-  final int id;
-  final String userName, firstName, bio,lastName;
+import '../../../Features/Topchefs/presentation/widgets/recipe_app_follow_button.dart';
+
+class ProfileModel  {
+
+  final int id; // Endi "id" faqat "int"
+
+  // Qolgan maydonlar
+  final String userName, firstName, bio, lastName;
   final String image;
   final int recipeCount, followingCount, followerCount;
 
@@ -18,13 +23,13 @@ class ProfileModel {
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) {
     return ProfileModel(
-      id: json["id"],
+      id: json["id"], // JSON-dan "id"ni oladi
       userName: json["username"],
       firstName: json["firstName"],
       lastName: json['lastName'],
       bio: json["presentation"],
       image: json["profilePhoto"],
-      recipeCount: json["recipesCount"] ,
+      recipeCount: json["recipesCount"],
       followingCount: json["followingCount"],
       followerCount: json["followerCount"],
     );

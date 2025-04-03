@@ -10,7 +10,7 @@ class AppbarInform extends StatelessWidget {
     required this.label,
   });
 
-  final int number;
+  final num number;
   final String label;
 
   @override

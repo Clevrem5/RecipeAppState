@@ -146,4 +146,20 @@ class ApiClient {
       throw Exception('followings xato ketdi');
     }
   }
+  Future<int> fetchFollowId(int id) async {
+    final response = await dio.post('/auth/follow/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data; // ✅ Agar int bo‘lsa, to‘g‘ridan-to‘g‘ri qaytaramiz
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0; // ✅ String bo‘lsa, int ga o‘tkazamiz
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
+  }
+
 }

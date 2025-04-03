@@ -43,7 +43,7 @@ import 'paths.dart';
 
 final router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: Routes.getFollow(1),
+  initialLocation: Routes.getChefsProfile(1),
   routes: [
     GoRoute(
       path: Routes.categories,

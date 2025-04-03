@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_textButton.dart';
@@ -6,14 +7,18 @@ import 'package:recipeapp3/Features/zeroCommon/body/recipe_textButton.dart';
 import '../../../../Core/data/models/topchefs_model.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../Topchefs/presentation/widgets/recipe_app_follow_button.dart';
+import '../manager/following_event.dart';
+import '../manager/following_state.dart';
 
 class FollowerPartUsers extends StatelessWidget {
   const FollowerPartUsers({
     super.key,
     required this.followers,
+    required this.state,
   });
 
   final TopChefModel followers;
+  final FollowState state;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +61,13 @@ class FollowerPartUsers extends StatelessWidget {
           spacing: 10.w,
           children: [
             RecipeTextButtonContainer(
-              text: "Following",
+              text: state.followUserStatus == FollowStatus.success ? 'Followed':'Following',
               textColor: AppColors.redPinkMain,
               containerColor: Colors.transparent,
-              callback: () {},
+              callback: () {
+                if (state.followUserStatus == FollowStatus.loading) return;
+                context.read<FollowBloc>().add(FollowUser(userId: followers.id));
+              },
               fontWeight: FontWeight.w300,
               fontSize: 14.sp,
               containerHeight: 15.h,
@@ -67,8 +75,11 @@ class FollowerPartUsers extends StatelessWidget {
               containerPaddingH: 0.w,
             ),
             RecipeAppFollowButton(
-              callback: () {},
-              text: "Delete",
+              callback: () {
+                if (state.followUserStatus == FollowStatus.loading) return;
+                context.read<FollowBloc>().add(FollowUser(userId: followers.id ));
+              },
+              text: state.followUserStatus == FollowStatus.success ? 'Deleted':'Delete',
               fontSize: 15,
               weight: FontWeight.w500,
               width: 70,
