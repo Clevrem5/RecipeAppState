@@ -18,7 +18,7 @@ class RecipeAppbarBottom extends StatelessWidget implements PreferredSizeWidget 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      clipBehavior: Clip.none,
+      clipBehavior: Clip.hardEdge,
       scrollDirection: Axis.horizontal,
       child: Row(
         spacing: 10,

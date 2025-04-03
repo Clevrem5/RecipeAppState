@@ -8,6 +8,7 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
   })  : _repo = repo,
         super(FollowState.initial()) {
     on<FollowLoad>(_load);
+    on<FollowUser>(_followUser);
   }
 
   Future<void> _load(FollowLoad event, Emitter<FollowState> emit) async {
@@ -16,5 +17,11 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
     emit(state.copyWith(follower: followers, followStatus: FollowStatus.success));
     final followings = await _repo.fetchFollowings(event.id);
     emit(state.copyWith(followings: followings, followingStatus: FollowStatus.success));
+  }
+
+  Future<void> _followUser(FollowUser event, Emitter<FollowState> emit) async {
+    emit(state.copyWith(followUserStatus: FollowStatus.loading));
+    int userId = await _repo.fetchFollowUser(event.userId);
+    emit(state.copyWith(followUser: userId, followUserStatus: FollowStatus.success));
   }
 }

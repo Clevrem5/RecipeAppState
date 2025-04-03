@@ -34,24 +34,31 @@ class FollowerPart extends StatelessWidget {
           SizedBox(height: 20.h),
           Expanded(
             child: BlocBuilder<FollowBloc, FollowState>(
-              builder: (context, state) => switch(state.followStatus) {
-                null => Center(child: Text("bosh keldi"),),
+              builder: (context, state) => switch (state.followStatus) {
+                null => Center(
+                    child: Text("bosh keldi"),
+                  ),
                 FollowStatus.idle => Center(child: Text("Loaded")),
                 FollowStatus.success => ListView(
-                  padding: EdgeInsets.only(bottom: 200.h),
-                  children: List.generate(
-                    state.followers!.length,
-                        (index) => SizedBox.fromSize(
-                      size: Size(0, 75.h),
-                      child: Column(
-                        children: [
-                          FollowerPartUsers(followers: state.followers![index],),
-                        ],
+                    padding: EdgeInsets.only(bottom: 200.h),
+                    children: List.generate(
+                      state.followers!.length,
+                      (index) => SizedBox.fromSize(
+                        size: Size(0, 75.h),
+                        child: Column(
+                          children: [
+                            FollowerPartUsers(
+                              followers: state.followers![index],
+                              state: state,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                FollowStatus.loading => Center(child: LinearProgressIndicator(),),
+                FollowStatus.loading => Center(
+                    child: LinearProgressIndicator(),
+                  ),
                 FollowStatus.error => Center(child: Text("Something went wrong...")),
               },
             ),

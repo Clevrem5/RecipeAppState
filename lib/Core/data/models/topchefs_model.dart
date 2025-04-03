@@ -1,4 +1,7 @@
-class TopChefModel {
+import 'package:recipeapp3/Features/Topchefs/presentation/widgets/recipe_app_follow_button.dart';
+
+class TopChefModel  {
+
   final int id;
   final String username;
   final String firstName, lastName;

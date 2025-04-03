@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:recipeapp3/Core/data/models/profileModel.dart';
 import 'package:recipeapp3/Features/Profile/presentation/widgets/recipe_userAppBar_info.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_bloc.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/manager/topcefs_profile/top_chefs_profile_state.dart';
 import 'package:recipeapp3/Features/Topchefs/presentation/widgets/profile_app_bar.dart';
 import 'package:recipeapp3/Features/zeroCommon/body/recipe_app_text.dart';
+
 import '../../../../Core/navigation/paths.dart';
 import '../../../../Core/utils/colors.dart';
 import '../../../CategoriesDetail/presentation/widgets/category_detail_info.dart';
@@ -16,6 +18,7 @@ import '../widgets/recipe_circle_image.dart';
 
 class TopChefsProfileDetail extends StatelessWidget {
   const TopChefsProfileDetail({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +78,14 @@ class TopChefsProfileDetail extends StatelessWidget {
                               ),
                               RecipeAppFollowButton(
                                 callback: (){},
+                                text: 'Following'
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    AppbarInfo(user: user),
+                    AppbarInfo(user: state.userInfo!),
                     Column(
                       children: [
                         RecipeAppText(

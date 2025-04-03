@@ -47,6 +47,7 @@ class FollowingPart extends StatelessWidget {
                         children: [
                           FollowingPartUsers(
                             followings: state.followings![index],
+                            state: state,
                           ),
                         ],
                       ),

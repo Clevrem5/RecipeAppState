@@ -10,3 +10,7 @@ final class FollowLoad extends FollowEvent{
   final int id;
   FollowLoad({required this.id});
 }
+final class FollowUser extends FollowEvent{
+  final int userId;
+  FollowUser({required this.userId});
+}
