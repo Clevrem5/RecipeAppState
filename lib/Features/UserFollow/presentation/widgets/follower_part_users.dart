@@ -61,12 +61,20 @@ class FollowerPartUsers extends StatelessWidget {
           spacing: 10.w,
           children: [
             RecipeTextButtonContainer(
-              text: state.followUserStatus == FollowStatus.success ? 'Followed':'Following',
+              text: state.followUserStatus == FollowStatus.success ? 'UnFollowing' : 'Following',
               textColor: AppColors.redPinkMain,
               containerColor: Colors.transparent,
               callback: () {
                 if (state.followUserStatus == FollowStatus.loading) return;
-                context.read<FollowBloc>().add(FollowUser(userId: followers.id));
+                if (state.followUserStatus == FollowStatus.success) {
+                  context.read<FollowBloc>().add(
+                        FollowUser(userId: followers.id),
+                      );
+                } else if (state.unFollowUserStatus == FollowStatus.success) {
+                  context.read<FollowBloc>().add(
+                        UnfollowUser(userId: followers.id),
+                      );
+                }
               },
               fontWeight: FontWeight.w300,
               fontSize: 14.sp,
@@ -76,10 +84,10 @@ class FollowerPartUsers extends StatelessWidget {
             ),
             RecipeAppFollowButton(
               callback: () {
-                if (state.followUserStatus == FollowStatus.loading) return;
-                context.read<FollowBloc>().add(FollowUser(userId: followers.id ));
+                if (state.deleteUserStatus == FollowStatus.loading) return;
+                context.read<FollowBloc>().add(DeleteUser(userId: followers.id));
               },
-              text: state.followUserStatus == FollowStatus.success ? 'Deleted':'Delete',
+              text: state.deleteUserStatus == FollowStatus.success ? 'Deleted' : 'Delete',
               fontSize: 15,
               weight: FontWeight.w500,
               width: 70,

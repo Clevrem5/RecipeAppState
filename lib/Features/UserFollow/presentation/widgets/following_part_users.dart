@@ -62,11 +62,15 @@ class FollowingPartUsers extends StatelessWidget {
           spacing: 8.w,
           children: [
             RecipeAppFollowButton(
-              callback:  (){
-                if (state.followUserStatus == FollowStatus.loading) return;
-                context.read<FollowBloc>().add(FollowUser(userId: followings.id ));
+              callback: () {
+                if (state.followUserStatus == FollowStatus.loading || state.unFollowUserStatus == FollowStatus.loading) return;
+                if (state.followUserStatus == FollowStatus.success) {
+                  context.read<FollowBloc>().add(FollowUser(userId: followings.id));
+                } else {
+                  context.read<FollowBloc>().add(UnfollowUser(userId: followings.id));
+                }
               },
-              text: state.followUserStatus == FollowStatus.success ? 'Followed':'Following',
+              text: state.followUserStatus == FollowStatus.success ? 'Unfollowing' : 'Following',
               fontSize: 15,
               weight: FontWeight.w500,
               width: 109.09,
@@ -78,7 +82,6 @@ class FollowingPartUsers extends StatelessWidget {
                   elevation: 4,
                   context: context,
                   backgroundColor: Colors.white,
-                  // Orqa fon rangi
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
                   ),
