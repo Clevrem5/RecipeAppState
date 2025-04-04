@@ -161,5 +161,35 @@ class ApiClient {
       throw Exception("Server xatosi: ${response.statusCode}");
     }
   }
+  Future<int> fetchDeleteId(int id) async {
+    final response = await dio.post('/auth/remove-follower/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data; // ✅ Agar int bo‘lsa, to‘g‘ridan-to‘g‘ri qaytaramiz
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0; // ✅ String bo‘lsa, int ga o‘tkazamiz
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
+  }
+  Future<int> fetchUnFollowId(int id) async {
+    final response = await dio.post('/auth/unfollow/$id');
+
+    if (response.statusCode == 200) {
+      if (response.data is int) {
+        return response.data; // ✅ Agar int bo‘lsa, to‘g‘ridan-to‘g‘ri qaytaramiz
+      } else if (response.data is String) {
+        return int.tryParse(response.data) ?? 0; // ✅ String bo‘lsa, int ga o‘tkazamiz
+      } else {
+        throw Exception("Noto‘g‘ri data turi: ${response.data}");
+      }
+    } else {
+      throw Exception("Server xatosi: ${response.statusCode}");
+    }
+  }
 
 }

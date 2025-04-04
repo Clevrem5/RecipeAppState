@@ -14,3 +14,13 @@ final class FollowUser extends FollowEvent{
   final int userId;
   FollowUser({required this.userId});
 }
+
+final class DeleteUser extends FollowEvent{
+  final int userId;
+  DeleteUser({required this.userId});
+}
+
+final class UnfollowUser extends FollowEvent{
+  final int userId;
+  UnfollowUser({required this.userId});
+}
